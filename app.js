@@ -163,7 +163,7 @@ function showForDate(d) {
 	const formatter = new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
 	const textDate = formatter.format(currentDate);
 	phraseEl.textContent = phrases[idx];
-	dateLine.textContent = `${textDate} • Frase ${idx + 1}/365`;
+	dateLine.textContent = `${textDate}`;
 	const isBirthday = (currentDate.getDate() === BIRTHDAY_DAY && (currentDate.getMonth() + 1) === BIRTHDAY_MONTH);
 	if (isBirthday) { showBirthdayOverlay(); } else hideBirthdayOverlay();
 }

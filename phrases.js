@@ -354,5 +354,6 @@ const appPhrases = [
     "Cada día es una nueva oportunidad para empezar otra vez, para creer de nuevo, para amarte un poco más. 🌈",
     "Eres una mezcla hermosa de fuerza y ternura, de sueños y realismo. Y eso te hace simplemente única. 💛",
     "No te apresures; las cosas buenas también tardan. Lo importante es que sigues caminando con el corazón por delante. 🌸",
-    "Que este día te abrace con calma, te llene de esperanza y te recuerde que eres más increíble de lo que imaginas. ❤️✨"
+    "Que este día te abrace con calma, te llene de esperanza y te recuerde que eres más increíble de lo que imaginas. ❤️✨",
+  "Quiero que no se te olvide nunca que estoy a tu lado, para todo lo que necesites ❤️✨. Pero quiero que tampoco olvidez que eres capaz de todo y que crep en ti con todas mis fuerzas❤️✨."
 ];

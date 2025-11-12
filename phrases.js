@@ -363,5 +363,9 @@ const appPhrases = [
   "Eres una niña muy linda, hermosa, guapa, valiosa, maravillosa, tu coranzoncito vale oro más que el oro y jamas digas que no, eres espectacular, acuerdate que a tráves de mis ojos siempre seras serás unica❤️",
   "Eres fuerte, eres valiosa y eres especial. La vida te puso retos, pero también te dio un alma que no se rinde y eso es lo que te hace unica💪💫.",
   "No todas las estrellas se encuentran en el cielo, algunas están aqui, sobre la tierra, en tu mirada por ejemplo😍",
-  "Lo que siento por ti no cabe en palabras, ni en versos, ni en canciones. Es algo que se siente en la piel, en el alma, en los silencios compartidos. Eres el pensamiento que calma, la voz que me devuelve el sentido, la historia que no quiero que acabe. Porque cuando te miro, lo entiendo todo: esto... es amor, del que no se olvida."
+  "Lo que siento por ti no cabe en palabras, ni en versos, ni en canciones. Es algo que se siente en la piel, en el alma, en los silencios compartidos. Eres el pensamiento que calma, la voz que me devuelve el sentido, la historia que no quiero que acabe. Porque cuando te miro, lo entiendo todo: esto... es amor, del que no se olvida.",
+  "Mientras te criticas por no avanzar, recuerda que hay alguien que admira lo que has logrado.🤭",
+  "Mientras te preguntas si estás haciendo lo suficiente, recuerda que hay alguien que se pregunta cómo puedes hacerlo todo✨",
+  "Gracias por ser como erés, por tu amistad y por demostrarme que en este mundo aún hay personas bonitas en las que podemos confiar, TE QUIERO MUCHO🥰",
+  "❤️TE QUIERO MUCHO❤️✨, MÁS DE LO QUE TE IMAGINAS❤️"
 ];

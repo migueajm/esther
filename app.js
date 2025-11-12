@@ -175,6 +175,8 @@ const newPhrase = () => {
 	createStars();
 }
 
+setInterval(() => newPhrase(), 10000);
+
 document.getElementById('prevBtn')?.addEventListener('click', () => {
 	const prev = new Date(currentDate); prev.setDate(prev.getDate() - 1); showForDate(prev);
 });

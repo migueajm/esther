@@ -17,7 +17,8 @@ function getNextBirthdayDate() {
 
 function createStars() {
 	const starsContainer = document.getElementById('stars');
-	const count = 28;
+	starsContainer.textContent = '';
+	const count = 40;
 	for (let i = 0; i < count; i++) {
 		const s = document.createElement('div');
 		s.className = 'star';
@@ -171,6 +172,7 @@ const newPhrase = () => {
 	const phraseEl = document.getElementById('phrase');
 	const index = (Math.floor(Math.random() * 365) + 1);
 	phraseEl.textContent = phrases[index] ?? 'Y es que contigo quiero vivir todo eso que no he vivido con alguien más, quiero proponerte todos los planes que jamás he propuesto, quiero leerte, cantarte y cuidarte, quiero abrazarte cada tarde, quiero llorar de felicidad. Y es que contigo solo busco poder hacer las cosas bien, por primera vez, porque quiero, porque eres tú, porque es contigo🥰.';
+	createStars();
 }
 
 document.getElementById('prevBtn')?.addEventListener('click', () => {

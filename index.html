@@ -4,8 +4,8 @@
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1"/>
 		<title>Para Esther Mazariegos - Un sitio con cariño</title>
-		<link rel="stylesheet" href="https://migueajm.github.io/esther/app.css">
-    <link rel="shortcut icon" href="https://migueajm.github.io/esther/favicon.png" type="image/x-icon">
+		<link rel="stylesheet" href="/a/app.css">
+		<link rel="shortcut icon" href="/a/favicon.png" type="image/x-icon">
 	</head>
 	<body>
 		<div class="container">
@@ -40,19 +40,49 @@
 
 					<div class="controls">
 						<div
-							class="nav">
-							<!-- 
-							          <button id="prevBtn" class="small muted">← Día anterior</button>
-							          <button id="todayBtn" class="small muted">Hoy</button>
-							          <button id="nextBtn" class="small muted">← Día siguiente</button> -->
+							class="nav"><!-- 
+																							          <button id="prevBtn" class="small muted">← Día anterior</button>
+																							          <button id="todayBtn" class="small muted">Hoy</button>
+																							          <button id="nextBtn" class="small muted">← Día siguiente</button> -->
 						</div>
-            <div style="display:flex;gap:8px;align-items:center">
-              <button onclick="newPhrase()" class="small">Más frases</button>
-            </div>
+						<div style="display:flex;gap:8px;align-items:center">
+							<button onclick="newPhrase()" class="small">Más frases</button>
+						</div>
 						<!-- <div style="display:flex;gap:8px;align-items:center">
-						          <button id="shareBtn" class="small">Compartir</button>
-						        </div> -->
+																		          <button id="shareBtn" class="small">Compartir</button>
+																		        </div> -->
 					</div>
+          <br>
+          <div style="display: flex; justify-content: center">
+            <div id="my-audio-widget" class="audio-widget" data-theme="dark">
+              <div class="art" id="art">A</div>
+              <div style="display:flex;flex-direction:column; width:100%">
+                <div class="meta">
+                  <div class="title" id="track-title">Canción de muestra</div>
+                  <div class="artist" id="track-artist">Artista Ejemplo</div>
+                </div>
+
+                <div class="controls">
+                  <button class="btn" id="btn-prev" title="Anterior">⏮</button>
+                  <button class="btn btn--big" id="btn-play" title="Reproducir">▶️</button>
+                  <button class="btn" id="btn-next" title="Siguiente">⏭</button>
+
+                  <div style="flex:1"></div>
+
+                  <div class="vol">
+                    <button class="btn" id="btn-mute" title="Silenciar">🔊</button>
+                  </div>
+                </div>
+
+                <div class="progress-wrap">
+                  <div class="time" id="time-current">0:00</div>
+                  <input type="range" id="progress" min="0" max="100" value="0" aria-label="Progreso"/>
+                  <div class="time" id="time-duration">0:00</div>
+                </div>
+              </div>
+            </div>
+            <audio id="audio" preload="metadata"></audio>
+          </div>
 					<footer>
 						<div id="hint">Cuando la tristeza toque tu puerta, regresa aquí. Encontrarás palabras que te recordarán lo increíble, única y especial que eres; Tambien lo importante que eres para mi. Y sobre todo… nunca dejes de sonreír❤️.</div>
 					</footer>
@@ -60,7 +90,6 @@
 				</main>
 
 				<canvas id="fireworksCanvas"></canvas>
-
 				<div class="birthday-overlay" id="birthdayOverlay">
 					<div class="birthday-card">
 						<div class="big">¡Feliz cumpleaños, Esther Mazariegos! 🎉</div>
@@ -71,7 +100,7 @@
 			</div>
 		</div>
 
-		<script src="https://migueajm.github.io/esther/phrases.js"></script>
-		<script src="https://migueajm.github.io/esther/app.js"></script>
+		<script src="/a/phrases.js"></script>
+		<script src="/a/app.js"></script>
 	</body>
 </html>

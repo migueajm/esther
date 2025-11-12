@@ -158,7 +158,7 @@ const appPhrases = [
   "🌺 No tienes idea de lo mucho que inspiras, Esther. Tienes una forma de ser que le da sentido a todo 🌈.",
   "🌤️ A veces los días pesan, pero saber que estás ahí hace todo más ligero. Eres mi pensamiento bonito del día 💕.",
   "✨ No todos los días son perfectos, pero con tu energía y sonrisa, cualquier día puede mejorar ❤️.",
-  "🌙 Si pudiera elegir un pensamiento para empezar cada mañana, siempre sería tú 🌸.",
+  "🌙 Si pudiera elegir un pensamiento para empezar cada mañana, siempre serías tú 🌸.",
   "💫 No busques ser perfecta, Esther. Ya brillas siendo auténtica, y eso te hace única 🌹.",
   "🕊️ La vida siempre se ve mejor cuando se mira con esperanza. Y tú, sin darte cuenta, eres una de mis razones para tenerla 🌈.",
   "🌼 Que hoy la vida te abrace con cosas bonitas, con paz, con cariño y con personas que te valoren tanto como yo 💖.",

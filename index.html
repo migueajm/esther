@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<title>Para Esther Mazariegos - Un sitio con cariño</title>
+		<link rel="stylesheet" href="/a/app.css">
+    <link rel="shortcut icon" href="/a/favicon.png" type="image/x-icon">
+	</head>
+	<body>
+		<div class="container">
+			<div class="card" id="card">
+				<div class="sky" aria-hidden="true">
+					<div class="moon" id="moon"></div>
+					<div class="stars" id="stars"></div>
+				</div>
+
+				<header class="top-row">
+					<div class="left">
+						<div style="display:flex;align-items:center;gap:12px">
+							<div class="logo">EM</div>
+							<div>
+								<h1>Para Esther Mazariegos 🥰</h1>
+								<p class="subtitle">Un rincón que guarda un pedacito de mi cariño por ti y siempre encontrarás palabras bonitas ❤️</p>
+							</div>
+						</div>
+					</div>
+				</header>
+				<main>
+					<div class="right">
+						<div class="counter">
+							<small>Tu día especial es en:</small>
+							<strong id="countdown">—</strong>
+						</div>
+					</div>
+					<div class="phrase-area">
+						<p class="phrase" id="phrase">Cargando frase del día…</p>
+						<div class="date-line" id="dateLine">—</div>
+					</div>
+
+					<div class="controls">
+						<div
+							class="nav">
+							<!-- 
+							          <button id="prevBtn" class="small muted">← Día anterior</button>
+							          <button id="todayBtn" class="small muted">Hoy</button>
+							          <button id="nextBtn" class="small muted">← Día siguiente</button> -->
+						</div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button onclick="newPhrase()" class="small">Más frases</button>
+            </div>
+						<!-- <div style="display:flex;gap:8px;align-items:center">
+						          <button id="shareBtn" class="small">Compartir</button>
+						        </div> -->
+					</div>
+					<footer>
+						<div id="hint">Cuando la tristeza toque tu puerta, regresa aquí. Encontrarás palabras que te recordarán lo increíble, única y especial que eres; Tambien lo importante que eres para mi. Y sobre todo… nunca dejes de sonreír❤️.</div>
+					</footer>
+
+				</main>
+
+				<canvas id="fireworksCanvas"></canvas>
+
+				<div class="birthday-overlay" id="birthdayOverlay">
+					<div class="birthday-card">
+						<div class="big">¡Feliz cumpleaños, Esther Mazariegos! 🎉</div>
+						<div style="margin-top:6px;color:var(--soft)">Hoy todo brilla para ti. Disfruta cada instante y quiero recordarte lo especial que eres. Conocerte fue descubrir a una persona hermosa por dentro y por fuera, fuerte, valiente, inteligente y maravillosa, con una sonrisa que alegra cualquier día. Admiro todo lo que eres y todo lo que haces, porque en ti habitan tantas cosas bonitas: tu bondad, tu esfuerzo, tu luz y esa forma única de hacer que todo sea mejor. Que la vida te devuelva en felicidad todo el amor y la energía que das. Feliz cumpleaños ❤️✨✨🌙</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<script src="/a/phrases.js"></script>
+		<script src="/a/app.js"></script>
+	</body>
+</html>

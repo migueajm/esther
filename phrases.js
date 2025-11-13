@@ -370,5 +370,13 @@ const appPhrases = [
   "❤️TE QUIERO MUCHO❤️✨, MÁS DE LO QUE TE IMAGINAS❤️",
   "Hoy dibuja una sonrisa😁 en esa carita hermosa que te dió Dios. Bella y maravillosa ya eres✨",
   "No te falta nada. Eres una gran mujer, un amor de persona, eres trabajadora, estás guapisima, te esfuerzas todos los días y tu corazón es noble, no dudes de ti✨❤️",
-  "Hoy es un buen día para recordarte que mereces todo lo que sueñas y que eres capaz de lograr todo lo que te propongas. Lo mejor esta por venir..."
+  "Hoy es un buen día para recordarte que mereces todo lo que sueñas y que eres capaz de lograr todo lo que te propongas. Lo mejor esta por venir...",
+  "Que jamas se te olvide que tú eres de personas bonitas que inspiran, que curan, que brillan y que son chingonas del corazón, de la sonrisa y de cada centimetro de su alma...",
+  "Eres bonita, hermosa, maravillosa, tienes unos ojos preciosos, un cabello hermoso y una sonrisa tan encantadora💕",
+  "Eres mágica, tierna, bonita, maravillosa, hermosa, poesia, fuego, estrellas, eres la chica que no aparenta mucho, pero del alma eres una galaxia entera...🌌",
+  "Tú para mi eres perfecta, bella, incomparable, linda y sobre todo la niña más hermosa del mundo💕",
+  "Gracias por compartir un rato de tu vida conmigo, por hacerme reir, por darle un giro a mi mundo. Gracias por cruzarte en mi camino...✨",
+  "Te quiero💕 asi como eres. Con todo lo bueno que no ves y con todo lo malo que dices tener...",
+  "Espera... No te vayas... Tengo algo... Que decirte... Gracias por cruzarte en mi vida. TE QUIERO MUCHO❤️",
+  "Me dijieron: \"Piensa en algo que te haga feliz\". Y te imagine a ti, SONRIENDO🤭"
 ];

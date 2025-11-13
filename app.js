@@ -286,13 +286,13 @@ overlay.addEventListener('click', () => hideBirthdayOverlay());
 
 (function () {
 	const playlist = [
-		{ title: 'Rainy', artist: 'Pufino', src: 'https://migueajm.github.io/esther/mp3/4.mp3', artText: 'RA' },
 		{ title: 'Harmony', artist: 'Pufino', src: 'https://migueajm.github.io/esther/mp3/7.mp3', artText: 'HA' },
 		{ title: 'Love in Japan', artist: 'Milky Wayvers', src: 'https://migueajm.github.io/esther/mp3/5.mp3', artText: 'LJ' },
-		{ title: 'Beautiful Liar', artist: 'AgusAlvarez & Markvard ', src: 'https://migueajm.github.io/esther/mp3/1.mp3', artText: 'BL' },
+		{ title: 'Rainy', artist: 'Pufino', src: 'https://migueajm.github.io/esther/mp3/4.mp3', artText: 'RA' },
 		{ title: 'Love', artist: 'Amine Maxwell', src: 'https://migueajm.github.io/esther/mp3/2.mp3', artText: 'LV' },
 		{ title: 'Coming Of Age', artist: 'Hazelwood', src: 'https://migueajm.github.io/esther/mp3/3.mp3', artText: 'CA' },
 		{ title: 'Silhouette', artist: 'Moavii', src: 'https://migueajm.github.io/esther/mp3/6.mp3', artText: 'SI' },
+		{ title: 'Beautiful Liar', artist: 'AgusAlvarez & Markvard ', src: 'https://migueajm.github.io/esther/mp3/1.mp3', artText: 'BL' },
 	];
 	const audio = document.getElementById('audio');
 	const playBtn = document.getElementById('btn-play');

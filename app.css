@@ -204,8 +204,6 @@ header {
 }
 
 .logo {
-	width: 64px;
-	height: 64px;
 	border-radius: 12px;
 	background: linear-gradient(135deg, #ff9ab6, #6fb7ff);
 	display: flex;
@@ -215,6 +213,7 @@ header {
 	font-weight: 700;
 	font-size: 20px;
 	box-shadow: 0 6px 18px rgba(111, 183, 255, 0.12);
+	padding: 20px;
 }
 
 h1 {

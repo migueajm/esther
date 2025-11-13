@@ -367,5 +367,8 @@ const appPhrases = [
   "Mientras te criticas por no avanzar, recuerda que hay alguien que admira lo que has logrado.🤭",
   "Mientras te preguntas si estás haciendo lo suficiente, recuerda que hay alguien que se pregunta cómo puedes hacerlo todo✨",
   "Gracias por ser como erés, por tu amistad y por demostrarme que en este mundo aún hay personas bonitas en las que podemos confiar, TE QUIERO MUCHO🥰",
-  "❤️TE QUIERO MUCHO❤️✨, MÁS DE LO QUE TE IMAGINAS❤️"
+  "❤️TE QUIERO MUCHO❤️✨, MÁS DE LO QUE TE IMAGINAS❤️",
+  "Hoy dibuja una sonrisa😁 en esa carita hermosa que te dió Dios. Bella y maravillosa ya eres✨",
+  "No te falta nada. Eres una gran mujer, un amor de persona, eres trabajadora, estás guapisima, te esfuerzas todos los días y tu corazón es noble, no dudes de ti✨❤️",
+  "Hoy es un buen día para recordarte que mereces todo lo que sueñas y que eres capaz de lograr todo lo que te propongas. Lo mejor esta por venir..."
 ];

@@ -278,10 +278,10 @@ function stopFireworks() { fwRunning = false; particles = []; canvas.style.displ
 
 showForDate(todayLocal());
 
-overlay.addEventListener('click', () => hideBirthdayOverlay());
-
+overlay.addEventListener('dblclick', () => hideBirthdayOverlay());
+overlay.addEventListener('click', () => SimpleAudioWidget.play());
 (function init() {
-	console.info("Sitio de frases cargado para", NAME);
+	console.info("Un espacio que te recordara lo increible, única y especial que eres❤️", NAME);
 })();
 
 (function () {
@@ -333,7 +333,6 @@ overlay.addEventListener('click', () => hideBirthdayOverlay());
 
 	audio.addEventListener('play', () => { isPlaying = true; playBtn.textContent = '⏸'; });
 	audio.addEventListener('pause', () => { isPlaying = false; playBtn.textContent = '▶️'; });
-
 	prevBtn.addEventListener('click', () => { idx = (idx - 1 + playlist.length) % playlist.length; loadTrack(idx); audio.play(); });
 	nextBtn.addEventListener('click', () => { idx = (idx + 1) % playlist.length; loadTrack(idx); audio.play(); });
 

@@ -20,7 +20,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: auto;
+    overflow: auto
     z-index: 999999;
     animation: fadeIn 1.5s ease-out forwards;
     padding: 20px;
@@ -159,6 +159,62 @@ body {
   line-height: 1.7;
   animation: fadeIn 3s ease;
 }
+
+/* Botón secreto */
+#secretBtn {
+  margin-top: 25px;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform .3s;
+}
+#secretBtn:hover { transform: scale(1.3); }
+
+#secretMessage {
+  opacity: 0;
+  margin-top: 10px;
+  transition: opacity 1s ease;
+  font-size: 1.2rem;
+}
+
+/* Música */
+#musicBtn {
+  margin-top: 40px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 8px 20px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  font-size: 1rem;
+}
+
+/* Animaciones */
+@keyframes colorShift {
+  0% { color: #ff7f7f; }
+  25% { color: #ffd27f; }
+  50% { color: #7fff9a; }
+  75% { color: #7fd9ff; }
+  100% { color: #c47fff; }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Versión ligera móviles */
+@media (max-width: 500px) {
+  .rainbow-text span {
+    font-size: 1.7rem;
+  }
+  .message {
+    font-size: 1rem;
+  }
+}
+
 </style>
 
 </head>

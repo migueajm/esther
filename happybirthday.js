@@ -82,7 +82,7 @@ title.innerHTML = "";
 
 original.split("").forEach((char, i) => {
     const span = document.createElement("span");
-    span.innerHTML = char === " " ? "&nbsp;&nbsp;" : char;
+    span.innerHTML = char === " " ? "&nbsp;" : char;
     span.style.animationDelay = `${i * 0.08}s`;
     title.appendChild(span);
 });

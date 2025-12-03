@@ -204,7 +204,7 @@ function updateCountdown() {
 	if (diff <= 0) {
 		document.getElementById('countdown').textContent = "¡Hoy!";
 		showBirthdayOverlay();
-		//startFireworks();
+		startFireworks();
 		return;
 	}
 	const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -220,12 +220,14 @@ const overlay = document.getElementById('birthdayOverlay');
 const canvas = document.getElementById('fireworksCanvas');
 let fireworksCtx, fwWidth, fwHeight, fwRunning = false;
 function showBirthdayOverlay() {
-	window.location.href = "https://migueajm.github.io/esther/happybirthday.html"
+	overlay.style.display = 'flex';
+	canvas.style.display = 'block';
+	startFireworks();
+	setTimeout(() => 	window.location.href = "https://migueajm.github.io/esther/happybirthday.html", 3000);
 }
 function hideBirthdayOverlay() {
-	
-	//overlay.style.display = 'none';
-	//stopFireworks();
+	overlay.style.display = 'none';
+	stopFireworks();
 }
 
 function setupCanvas() {

@@ -76,7 +76,6 @@ function loop() {
 }
 loop();
 
-/* ----------- RAINBOW LETTER SCRIPT ----------- */
 const title = document.querySelector(".rainbow-text");
 const original = title.innerText;
 title.innerHTML = "";

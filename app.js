@@ -204,7 +204,7 @@ function updateCountdown() {
 	if (diff <= 0) {
 		document.getElementById('countdown').textContent = "¡Hoy!";
 		showBirthdayOverlay();
-		startFireworks();
+		//startFireworks();
 		return;
 	}
 	const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -225,8 +225,9 @@ function showBirthdayOverlay() {
 	startFireworks();
 }
 function hideBirthdayOverlay() {
-	overlay.style.display = 'none';
-	stopFireworks();
+	window.location.href = "https://migueajm.github.io/esther/happybirthday.html"
+	//overlay.style.display = 'none';
+	//stopFireworks();
 }
 
 function setupCanvas() {

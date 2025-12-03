@@ -220,12 +220,10 @@ const overlay = document.getElementById('birthdayOverlay');
 const canvas = document.getElementById('fireworksCanvas');
 let fireworksCtx, fwWidth, fwHeight, fwRunning = false;
 function showBirthdayOverlay() {
-	overlay.style.display = 'flex';
-	canvas.style.display = 'block';
-	startFireworks();
+	window.location.href = "https://migueajm.github.io/esther/happybirthday.html"
 }
 function hideBirthdayOverlay() {
-	window.location.href = "https://migueajm.github.io/esther/happybirthday.html"
+	
 	//overlay.style.display = 'none';
 	//stopFireworks();
 }

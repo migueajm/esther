@@ -217,7 +217,16 @@ body {
 }
 
 </style>
-
+<script>
+    const today = new Date();
+    const isTargetDate =
+      today.getDate() === 7 &&
+      today.getMonth() === 11;
+    
+    if (!isTargetDate) {
+      window.location.href = "https://github.com/migueajm/esther";
+    }
+</script>
 </head>
 <body>
 

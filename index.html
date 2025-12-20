@@ -4,8 +4,8 @@
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width,initial-scale=1"/>
 		<title>Para Esther Mazariegos - Un sitio con cariño</title>
-		<link rel="stylesheet" href="https://migueajm.github.io/esther/mp3.css?date=03122025">
-		<link rel="stylesheet" href="https://migueajm.github.io/esther/app.css?date=03122025">
+		<link rel="stylesheet" href="https://migueajm.github.io/esther/mp3.css?date=19122025">
+		<link rel="stylesheet" href="https://migueajm.github.io/esther/app.css?date=19122025">
 		<link rel="shortcut icon" href="https://migueajm.github.io/esther/favicon.png" type="image/x-icon">
 	</head>
 	<body>
@@ -35,23 +35,18 @@
 						</div>
 					</div>
 					<div class="phrase-area">
+						<span id="container-emoji" style="position: relative; top: -1rem; font-size: 3rem;"></span>
 						<p class="phrase" id="phrase">Cargando frase del día…</p>
 						<div class="date-line" id="dateLine">—</div>
 					</div>
 
 					<div class="controls">
 						<div
-							class="nav"><!-- 
-																							          <button id="prevBtn" class="small muted">← Día anterior</button>
-																							          <button id="todayBtn" class="small muted">Hoy</button>
-																							          <button id="nextBtn" class="small muted">← Día siguiente</button> -->
+							class="nav">
 						</div>
 						<div style="display:flex;gap:8px;align-items:center">
-							<button onclick="newPhrase()" class="small">Más frases</button>
+							<button onclick="newPhrase()" class="small">></button>
 						</div>
-						<!-- <div style="display:flex;gap:8px;align-items:center">
-																		          <button id="shareBtn" class="small">Compartir</button>
-																		        </div> -->
 					</div>
           <br>
           <div style="display: flex; justify-content: center">
@@ -99,9 +94,34 @@
 				</div>
 			</div>
 		</div>
+		<div class="snow-container"></div>
+		<div class="intro-overlay" id="introOverlay">
+			<div class="stars stars-back"></div>
+			<div class="stars stars-front"></div>
+			<div class="moon"></div>
 
-		<script src="https://migueajm.github.io/esther/phrases.js?date=03122025"></script>
-		<script src="https://migueajm.github.io/esther/app.js?date=03122025"></script>
-		<script src="https://migueajm.github.io/esther/mp3.js?date=03122025"></script>
+			<div class="intro-content">
+				<h1 class="intro-title">Este espacio fue creado con cariño para ti Esther 🤍</h1>
+				<p class="intro-subtitle">
+					Tómate un momento, este lugar es para ti
+				</p>
+				<button class="intro-btn" id="enterBtn">
+					Pulsa para continuar ✨
+				</button>
+			</div>
+		</div>
+
+		<script>
+			function isChristmas(evaluateDay) {
+				const today = new Date();
+				const day = today.getDate();
+				const month = today.getMonth();
+				if(!evaluateDay) return month === 11;
+				return month === 11 && [24, 25].includes(day);
+			}
+		</script>
+		<script src="https://migueajm.github.io/esther/phrases.js?date=19122025"></script>
+		<script src="https://migueajm.github.io/esther/app.js?date=19122025"></script>
+		<script src="https://migueajm.github.io/esther/mp3.js?date=19122025"></script>
 	</body>
 </html>

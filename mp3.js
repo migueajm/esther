@@ -6,7 +6,8 @@
 		{ title: 'Love', artist: 'Amine Maxwell', src: 'https://migueajm.github.io/esther/mp3/2.mp3', artText: 'LV' },
 		{ title: 'Coming Of Age', artist: 'Hazelwood', src: 'https://migueajm.github.io/esther/mp3/3.mp3', artText: 'CA' },
 		{ title: 'Silhouette', artist: 'Moavii', src: 'https://migueajm.github.io/esther/mp3/6.mp3', artText: 'SI' },
-		{ title: 'Beautiful Liar', artist: 'AgusAlvarez & Markvard ', src: 'https://migueajm.github.io/esther/mp3/1.mp3', artText: 'BL' },
+		{ title: 'Beautiful Liar', artist: 'AgusAlvarez & Markvard', src: 'https://migueajm.github.io/esther/mp3/1.mp3', artText: 'BL' },
+		{ title: 'Happy Christmas', artist: 'VibeHorn', src: 'mp3/12.mp3', artText: 'BL' },
 	];
 	const audio = document.getElementById('audio');
 	const playBtn = document.getElementById('btn-play');
@@ -24,7 +25,12 @@
 	let isPlaying = false;
 
 	function loadTrack(i) {
-		const t = playlist[i];
+		let pl = playlist;
+		if(isChristmas()){
+			const end = pl.pop();
+			pl.unshift(end);
+		}
+		const t = pl[i];
 		audio.src = t.src;
 		title.textContent = t.title;
 		artist.textContent = t.artist;
@@ -80,9 +86,23 @@
 
 	window.SimpleAudioWidget = {
 		load: (arr) => { if (Array.isArray(arr) && arr.length) { playlist.length = 0; arr.forEach(x => playlist.push(x)); idx = 0; loadTrack(0); } },
-		play: () => audio.play(),
+		play: () => {
+			audio.play();
+			audio.volume = 0.4;
+		},
 		pause: () => audio.pause(),
 		next: () => nextBtn.click(),
 		prev: () => prevBtn.click(),
 	};
 })();
+
+const btn = document.getElementById("enterBtn");
+const introOverlay = document.getElementById("introOverlay");
+const music = document.getElementById("bgMusic"); // <audio>
+introOverlay.addEventListener("click", () => {
+	SimpleAudioWidget.play();
+	introOverlay.classList.add("fade-out");
+	setTimeout(() => {
+		introOverlay.style.display = "none";
+	}, 1);
+});

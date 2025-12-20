@@ -140,7 +140,6 @@ function generate365Phrases(name) {
 
 	];*/
 	const phrases = appPhrases;
-	while (phrases.length < 365) phrases.push(`Hoy pienso en ti, 🥰${name}🥰, y deseo que tengas un día lleno de luz.\n🥰`);
 	return phrases.sort(function () { return Math.random() - 0.5 });
 }
 
@@ -162,7 +161,7 @@ function showForDate(d) {
 	const dateLine = document.getElementById('dateLine');
 	const formatter = new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
 	const textDate = formatter.format(currentDate);
-	phraseEl.textContent = phrases[idx];
+	phraseEl.textContent = isChristmas(true) ? phrases[0] : phrases[(Math.floor(Math.random() * (phrases.length - 1)) + 1)];
 	dateLine.textContent = `${textDate}`;
 	const isBirthday = (currentDate.getDate() === BIRTHDAY_DAY && (currentDate.getMonth() + 1) === BIRTHDAY_MONTH);
 	if (isBirthday) { showBirthdayOverlay(); } else hideBirthdayOverlay();
@@ -170,7 +169,8 @@ function showForDate(d) {
 
 const newPhrase = () => {
 	const phraseEl = document.getElementById('phrase');
-	const index = (Math.floor(Math.random() * 365) + 1);
+
+	const index = (Math.floor(Math.random() * (phrases.length - 1)) + 1);
 	phraseEl.textContent = phrases[index] ?? 'Y es que contigo quiero vivir todo eso que no he vivido con alguien más, quiero proponerte todos los planes que jamás he propuesto, quiero leerte, cantarte y cuidarte, quiero abrazarte cada tarde, quiero llorar de felicidad. Y es que contigo solo busco poder hacer las cosas bien, por primera vez, porque quiero, porque eres tú, porque es contigo🥰.';
 	createStars();
 }
@@ -284,3 +284,28 @@ overlay.addEventListener('click', () => SimpleAudioWidget.play());
 (function init() {
 	console.info("Un espacio que te recordara lo increible, única y especial que eres❤️", NAME);
 })();
+
+if (isChristmas()) {
+	const containerEmoji = document.querySelector('span#container-emoji');
+	if(containerEmoji){
+		containerEmoji.textContent = "🎄❄️☃️🪅🎉";
+	}
+  document.body.classList.add("christmas-mode");
+}
+
+if (document.body.classList.contains("christmas-mode")) {
+  const snowContainer = document.querySelector(".snow-container");
+
+  const flakes = window.innerWidth < 768 ? 30 : 60;
+
+  for (let i = 0; i < flakes; i++) {
+    const flake = document.createElement("div");
+    flake.className = "snowflake";
+    flake.textContent = "❄";
+    flake.style.left = Math.random() * 100 + "vw";
+    flake.style.animationDuration = 6 + Math.random() * 8 + "s";
+    flake.style.opacity = Math.random();
+    flake.style.fontSize = 8 + Math.random() * 12 + "px";
+    snowContainer.appendChild(flake);
+  }
+}

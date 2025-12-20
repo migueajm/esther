@@ -216,6 +216,57 @@ body {
   }
 }
 
+.stars {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+.stars-back {
+  background:
+    radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 30% 80%, #fff, transparent),
+    radial-gradient(1px 1px at 50% 50%, #fff, transparent),
+    radial-gradient(1px 1px at 70% 30%, #fff, transparent),
+    radial-gradient(1px 1px at 90% 60%, #fff, transparent);
+  background-size: 200px 200px;
+  opacity: 0.5;
+  animation: moveStars 120s linear infinite;
+}
+
+.stars-front {
+  background:
+    radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+    radial-gradient(2px 2px at 40% 70%, #fff, transparent),
+    radial-gradient(2px 2px at 60% 20%, #fff, transparent),
+    radial-gradient(2px 2px at 80% 50%, #fff, transparent),
+    radial-gradient(2px 2px at 50% 90%, #fff, transparent);
+  background-size: 150px 150px;
+  opacity: 0.8;
+  animation: moveStars 80s linear infinite;
+}
+
+@keyframes moveStars {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-1000px);
+  }
+}
+
+.stars-front {
+  animation:
+    moveStars 80s linear infinite,
+    twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
 </style>
 <script>
     const today = new Date();
@@ -230,9 +281,10 @@ body {
 </head>
 <body>
 
+<div class="stars stars-back" style="z-index: 9999999"></div>
+<div class="stars stars-front" style="z-index: 9999999"></div>
 <div class="birthday-overlay epic" id="birthdayOverlay">
     <canvas id="fireworks"></canvas>
-    <div class="stars"></div>
 
     <div class="birthday-card-epic">
         <div class="rainbow-text big">
@@ -287,6 +339,15 @@ body {
 
     <div class="moon-glow"></div>
 </div>
+<script>
+  function isChristmas(evaluateDay) {
+    const today = new Date();
+    const day = today.getDate();
+    const month = today.getMonth();
+    if(!evaluateDay) return month === 11;
+    return month === 11 && [24, 25].includes(day);
+  }
+</script>
 <script src="https://migueajm.github.io/esther/happybirthday.js?date=1"></script>
 <script src="https://migueajm.github.io/esther/mp3.js?date=1"></script>
 </body>

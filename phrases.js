@@ -1,4 +1,4 @@
-const appPhrases = [
+let appPhrases = [
   'Y es que contigo quiero vivir todo eso que no he vivido con alguien más, quiero proponerte todos los planes que jamás he propuesto, quiero leerte, cantarte y cuidarte, quiero abrazarte cada tarde, quiero llorar de felicidad. Y es que contigo solo busco poder hacer las cosas bien, por primera vez, porque quiero, porque eres tú, porque es contigo🥰.',
   'Que sepas que eres valiente y capaz 🌟 no hay reto que no puedas superar 💪 y quiero verte brillar ✨.',
   'Que sepas que eres tan hermosa que el mundo parece detenerse un momento 💘 tu belleza no solo se ve, se siente 💞.',
@@ -378,5 +378,53 @@ const appPhrases = [
   "Gracias por compartir un rato de tu vida conmigo, por hacerme reir, por darle un giro a mi mundo. Gracias por cruzarte en mi camino...✨",
   "Te quiero💕 asi como eres. Con todo lo bueno que no ves y con todo lo malo que dices tener...",
   "Espera... No te vayas... Tengo algo... Que decirte... Gracias por cruzarte en mi vida. TE QUIERO MUCHO❤️",
-  "Me dijieron: \"Piensa en algo que te haga feliz\". Y te imagine a ti, SONRIENDO🤭"
+  "Me dijieron: \"Piensa en algo que te haga feliz\". Y te imagine a ti, SONRIENDO🤭",
+  "Que cada luz encendida esta noche te recuerde lo valiosa que eres. 🤍",
+  "Que los días grises se llenen de brillo y los buenos momentos duren más. ✨",
+  "Que el amor, la calma y las sonrisas te acompañen en cada paso. 🌟",
+  "Que esta fecha te envuelva con la misma luz que tú regalas al mundo. 🌙✨",
+  "Que cada estrella del cielo celebre tu forma tan bonita de ser. ⭐",
+  "Que encuentres descanso, paz y alegría en los pequeños detalles. 🤍",
+  "Que el calor de esta noche te recuerde que eres profundamente especial. ❄️🤍",
+  "Admiro la manera en que sigues adelante, incluso cuando el camino no es fácil tu esfuerzo habla más fuerte que cualquier palabra.✨",
+  "Tu constancia y tu forma de enfrentar la vida son un reflejo de la gran persona que eres.🤍",
+  "Hay una fortaleza silenciosa en ti que inspira, una que se construye día a día con esfuerzo y corazón.",
+  "Todo lo que logras tiene detrás dedicación, valentía y una esencia muy bonita que te define.",
+  "Tu esfuerzo no pasa desapercibido; se nota en lo que haces y en la persona en la que te conviertes.✨",
+  "Eres ejemplo de que la sensibilidad y la fuerza pueden caminar juntas.🤍"
 ];
+
+if (isChristmas(true)) {
+  appPhrases = [
+    "Solo quería desearte una muy linda Nochebuena y una Navidad llena de paz, luz y momentos bonitos. 🎄✨ Que esta noche esté rodeada de calma, sonrisas y personas que te quieren, y que cada instante te regale tranquilidad, cariño y razones para sonreír. Disfruta mucho estas fechas tan especiales. 🤍✨",
+    "Esther, que la luz de esta Navidad 🎄 ilumine cada paso que das y te recuerde lo valiosa que eres 🌟",
+    "En estas fechas tan bonitas 🎄, deseo que recibas todo el cariño que das cada día 🤍",
+    "Que el espíritu navideño 🎄 te llene de paz, esperanza y motivos para sonreír ✨",
+    "Navidad es pausa, es luz 🎄, y tú haces que todo brille un poquito más 🌙",
+    "Que esta Navidad 🎄 te regale descanso al alma y alegría al corazón 💫",
+    "Esther, que cada lucecita de Navidad 🎄 te recuerde lo especial que eres ✨",
+    "En esta Navidad 🎄, que nunca te falte amor, calma y sueños bonitos 🤍",
+    "Que los días navideños 🎄 te abracen suave y te llenen de esperanza 🌟",
+    "Navidad 🎄 también es agradecer, y yo agradezco que existas ✨",
+    "Que esta época tan linda 🎄 te regale momentos simples pero inolvidables 💖",
+    "Esther, que la magia de la Navidad 🎄 te acompañe hoy y siempre ✨",
+    "Que cada noche de diciembre 🎄 esté llena de paz y pensamientos bonitos 🌙",
+    "Navidad 🎄 es compartir luz, y tú tienes mucha para dar 🌟",
+    "Que esta Navidad 🎄 llegue cargada de calma, ilusión y sonrisas sinceras ✨",
+    "Esther, que el amor de estas fechas 🎄 te rodee y te haga sentir en casa 🤍",
+    "Que los pequeños momentos de Navidad 🎄 se conviertan en grandes recuerdos 💫",
+    "Navidad 🎄 es creer, y tú inspiras a creer en cosas bonitas ✨",
+    "Que esta Navidad 🎄 te regale motivos nuevos para sonreír 🌟",
+    "Esther, que el brillo de estas fechas 🎄 refleje todo lo bonito que hay en ti ✨",
+    "Que el calor de la Navidad 🎄 llegue directo a tu corazón 🤍",
+    "Navidad 🎄 es luz en medio del invierno, como tu sonrisa 🌙",
+    "Que esta Navidad 🎄 te traiga tranquilidad, amor y sueños en paz ✨",
+    "Esther, que cada abrazo navideño 🎄 te recuerde lo querida que eres 💖",
+    "Navidad 🎄 también es agradecer lo vivido y confiar en lo que viene 🌟",
+    "Que la magia de estas fechas 🎄 te llene de esperanza y serenidad ✨",
+    "Esther, que esta Navidad 🎄 sea tan bonita como tu esencia 🤍",
+    "Que los días navideños 🎄 te regalen paz, risas y descanso 🌙",
+    "Navidad 🎄 es corazón, y tú tienes uno muy bonito ✨",
+    "Que esta Navidad 🎄 te recuerde lo fuerte, valiosa y especial que eres 🌟"
+  ];
+}

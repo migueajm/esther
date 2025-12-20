@@ -53,8 +53,26 @@
 
 	audio.addEventListener('play', () => { isPlaying = true; playBtn.textContent = '⏸'; });
 	audio.addEventListener('pause', () => { isPlaying = false; playBtn.textContent = '▶️'; });
-	prevBtn.addEventListener('click', () => { idx = (idx - 1 + playlist.length) % playlist.length; loadTrack(idx); audio.play(); });
-	nextBtn.addEventListener('click', () => { idx = (idx + 1) % playlist.length; loadTrack(idx); audio.play(); });
+	prevBtn.addEventListener('click', () => {
+		let pl = playlist;
+		if(isChristmas()){
+			const end = pl.pop();
+			pl.unshift(end);
+		}
+		idx = (idx - 1 + pl.length) % pl.length;
+		 loadTrack(idx);
+		 audio.play();
+	});
+	nextBtn.addEventListener('click', () => {
+		let pl = playlist;
+		if(isChristmas()){
+			const end = pl.pop();
+			pl.unshift(end);
+		}
+		idx = (idx + 1) % pl.length;
+		loadTrack(idx);
+		audio.play();
+	});
 
 	muteBtn.addEventListener('click', () => { audio.muted = !audio.muted; muteBtn.textContent = audio.muted ? '🔈' : '🔊'; });
 

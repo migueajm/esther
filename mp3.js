@@ -7,7 +7,7 @@
 		{ title: 'Coming Of Age', artist: 'Hazelwood', src: 'https://migueajm.github.io/esther/mp3/3.mp3', artText: 'CA' },
 		{ title: 'Silhouette', artist: 'Moavii', src: 'https://migueajm.github.io/esther/mp3/6.mp3', artText: 'SI' },
 		{ title: 'Beautiful Liar', artist: 'AgusAlvarez & Markvard', src: 'https://migueajm.github.io/esther/mp3/1.mp3', artText: 'BL' },
-		{ title: 'Happy Christmas', artist: 'VibeHorn', src: 'mp3/12.mp3', artText: 'BL' },
+		{ title: 'Happy Christmas', artist: 'VibeHorn', src: 'https://migueajm.github.io/esther/mp3/12.mp3', artText: 'BL' },
 	];
 	const audio = document.getElementById('audio');
 	const playBtn = document.getElementById('btn-play');

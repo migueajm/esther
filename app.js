@@ -201,13 +201,18 @@ function updateCountdown() {
 	const now = new Date();
 	const bd = getNextBirthdayDate();
 	const diff = bd - now;
+	const counter = document.querySelector('.counter');
+	const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+	counter.hidden = true; 
+	if(days < 5) {
+		counter.hidden = false;
+	}
 	if (diff <= 0) {
 		document.getElementById('countdown').textContent = "¡Hoy!";
 		showBirthdayOverlay();
 		startFireworks();
 		return;
 	}
-	const days = Math.floor(diff / (1000 * 60 * 60 * 24));
 	const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 	const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 	const secs = Math.floor((diff % (1000 * 60)) / 1000);

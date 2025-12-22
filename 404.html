@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 · Un lugar que ya no está</title>
+	<link rel="shortcut icon" href="https://migueajm.github.io/esther/favicon.png" type="image/x-icon">
+  <style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Segoe UI', system-ui, sans-serif;
+		}
+
+		body {
+			min-height: 100vh;
+			background: radial-gradient(circle at bottom, #0b1d2a, #050b14);
+			color: #e6eef6;
+			overflow: hidden;
+		}
+
+		.sky {
+			position: fixed;
+			inset: 0;
+			z-index: 0;
+		}
+
+		.stars::before {
+			content: '';
+			position: absolute;
+			width: 2px;
+			height: 2px;
+			background: white;
+			box-shadow:
+				20vw 10vh white,
+				40vw 30vh white,
+				70vw 20vh white,
+				80vw 60vh white,
+				15vw 70vh white,
+				55vw 80vh white,
+				90vw 40vh white;
+			opacity: 0.7;
+			animation: twinkle 6s infinite ease-in-out;
+		}
+
+		@keyframes twinkle {
+			0%, 100% { opacity: 0.3; }
+			50% { opacity: 0.8; }
+		}
+
+		.moon {
+			position: absolute;
+			top: 8%;
+			right: 10%;
+			width: 90px;
+			height: 90px;
+			border-radius: 50%;
+			background: radial-gradient(circle, #fff 30%, #d6d6d6 70%);
+			box-shadow: 0 0 25px rgba(255,255,255,0.3);
+		}
+
+		.container {
+			position: relative;
+			z-index: 1;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			padding: 20px;
+		}
+
+		h1 {
+			font-size: 5rem;
+			letter-spacing: 6px;
+			opacity: 0.85;
+		}
+
+		.message {
+			margin-top: 15px;
+			font-size: 1.1rem;
+			line-height: 1.6;
+			opacity: 0.9;
+		}
+
+		.sub {
+			margin-top: 10px;
+			font-size: 0.9rem;
+			opacity: 0.7;
+		}
+
+		.back {
+			margin-top: 30px;
+			text-decoration: none;
+			color: #fff;
+			border: 1px solid rgba(255,255,255,0.3);
+			padding: 10px 24px;
+			border-radius: 20px;
+			transition: all 0.3s ease;
+		}
+
+		.back:hover {
+			background: rgba(255,255,255,0.1);
+			transform: translateY(-2px);
+		}
+	</style>
+</head>
+<body>
+
+  <div class="sky">
+    <div class="stars"></div>
+    <div class="moon"></div>
+  </div>
+
+  <main class="container">
+    <h1>404</h1>
+    <p class="message">
+      Parece que este lugar ya no existe…<br>
+      pero lo bonito que fue, nadie lo borra.
+    </p>
+
+    <p class="sub">
+      A veces perderse también es parte del camino.
+    </p>
+
+    <a href="/" class="back">Volver con calma</a>
+  </main>
+
+</body>
+</html>

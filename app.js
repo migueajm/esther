@@ -2,6 +2,8 @@ const NAME = "Esther Mazariegos";
 const BIRTHDAY_MONTH = 12;
 const BIRTHDAY_DAY = 7;
 
+window.location.href = "https://migueajm.github.io/esther/404.html";
+return;
 function todayLocal() {
 	const d = new Date();
 	return new Date(d.getFullYear(), d.getMonth(), d.getDate());

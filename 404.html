@@ -4,6 +4,7 @@
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title>404 · Un lugar que ya no está</title>
+		<link rel="shortcut icon" href="https://migueajm.github.io/esther/favicon.png" type="image/x-icon">
 		<style>
 			* {
 				margin: 0;
@@ -14,7 +15,7 @@
 
 			body {
 				min-height: 100vh;
-				background: radial-gradient(circle at bottom, #0b2a1d, #06130c);
+				background: radial-gradient(circle at bottom, #061810ff, #010302ff);
 				color: #eef7f0;
 				overflow: hidden;
 				opacity: 0;
@@ -132,6 +133,29 @@
 				background: rgba(255, 255, 255, 0.15);
 				transform: translateY(-2px);
 			}
+
+			.christmas-mode .snow-container {
+				position: fixed;
+				inset: 0;
+				pointer-events: none;
+				overflow: hidden;
+				z-index: 5;
+			}
+
+			.snowflake {
+				position: absolute;
+				top: -10px;
+				color: #fff;
+				font-size: 12px;
+				opacity: 0.8;
+				animation: fall linear infinite;
+			}
+
+			@keyframes fall {
+				to {
+					transform: translateY(110vh);
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -147,13 +171,26 @@
 
 			<p class="message">
 				Esta página no está aquí…<br>
-				pero esta noche sigue siendo especial.
+				pero este día sigue siendo especial.
 			</p>
 
 			<p class="sub">
-				Que la Navidad te regale calma, luz y momentos bonitos. 🎄✨
 			</p>
 		</main>
-
+		<div class="snow-container"></div>
+		<script>
+			const snowContainer = document.querySelector(".snow-container");
+			const flakes = window.innerWidth < 768 ? 30 : 60;
+			for (let i = 0; i < flakes; i++) {
+				const flake = document.createElement("div");
+				flake.className = "snowflake";
+				flake.textContent = "❄";
+				flake.style.left = Math.random() * 100 + "vw";
+				flake.style.animationDuration = 6 + Math.random() * 8 + "s";
+				flake.style.opacity = Math.random();
+				flake.style.fontSize = 8 + Math.random() * 12 + "px";
+				snowContainer.appendChild(flake);
+			}
+		</script>
 	</body>
 </html>

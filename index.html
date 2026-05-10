@@ -1,127 +1,1023 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="utf-8"/>
-		<meta name="viewport" content="width=device-width,initial-scale=1"/>
-		<title>Para Esther Mazariegos - Un sitio con cariño</title>
-		<link rel="stylesheet" href="https://migueajm.github.io/esther/mp3.css?date=19122025">
-		<link rel="stylesheet" href="https://migueajm.github.io/esther/app.css?date=19122025">
-		<link rel="shortcut icon" href="https://migueajm.github.io/esther/favicon.png" type="image/x-icon">
-	</head>
-	<body>
-		<div class="container">
-			<div class="card" id="card">
-				<div class="sky" aria-hidden="true">
-					<div class="moon" id="moon"></div>
-					<div class="stars" id="stars"></div>
-				</div>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-				<header class="top-row">
-					<div class="left">
-						<div style="display:flex;align-items:center;gap:12px">
-							<div class="logo">EM</div>
-							<div>
-								<h1>Para Esther Mazariegos 🥰</h1>
-								<p class="subtitle">Un rincón que guarda un pedacito de mi cariño por ti y siempre encontrarás palabras bonitas ❤️</p>
-							</div>
-						</div>
-					</div>
-				</header>
-				<main>
-					<div class="right">
-						<div class="counter">
-							<small>Tu día especial es en:</small>
-							<strong id="countdown">—</strong>
-						</div>
-					</div>
-					<div class="phrase-area">
-						<span id="container-emoji" style="position: relative; top: -1rem; font-size: 2rem;"></span>
-						<p class="phrase" id="phrase">Cargando frase del día…</p>
-						<div class="date-line" id="dateLine">—</div>
-					</div>
+<title>For Esther ✨</title>
+<link rel="shortcut icon" href="https://migueajm.github.io/esther/favicon.png" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-					<div class="controls">
-						<div
-							class="nav">
-						</div>
-						<div style="display:flex;gap:8px;align-items:center">
-							<button onclick="newPhrase()" class="small">></button>
-						</div>
-					</div>
-          <br>
-          <div style="display: flex; justify-content: center">
-            <div id="my-audio-widget" class="audio-widget" data-theme="dark">
-              <div class="art" id="art">A</div>
-              <div style="display:flex;flex-direction:column; width:100%">
-                <div class="meta">
-                  <div class="title" id="track-title">Canción de muestra</div>
-                  <div class="artist" id="track-artist">Artista Ejemplo</div>
-                </div>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
-                <div class="controls">
-                  <button class="btn" id="btn-prev" title="Anterior">⏮</button>
-                  <button class="btn btn--big" id="btn-play" title="Reproducir">▶️</button>
-                  <button class="btn" id="btn-next" title="Siguiente">⏭</button>
+<style>
 
-                  <div style="flex:1"></div>
+/* ======================================================
+   RESET
+====================================================== */
 
-                  <div class="vol">
-                    <button class="btn" id="btn-mute" title="Silenciar">🔊</button>
-                  </div>
-                </div>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-                <div class="progress-wrap">
-                  <div class="time" id="time-current">0:00</div>
-                  <input type="range" id="progress" min="0" max="100" value="0" aria-label="Progreso"/>
-                  <div class="time" id="time-duration">0:00</div>
-                </div>
-              </div>
-            </div>
-            <audio id="audio" preload="metadata"></audio>
-          </div>
-					<footer>
-						<div id="hint">Cuando la tristeza toque tu puerta, regresa aquí. Encontrarás palabras que te recordarán lo increíble, única y especial que eres; Tambien lo importante que eres para mi. Y sobre todo… nunca dejes de sonreír❤️.</div>
-					</footer>
+html{
+  scroll-behavior:smooth;
+}
 
-				</main>
+body{
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+  background:#050816;
+  color:white;
+  min-height:100vh;
+  position:relative;
+}
 
-				<canvas id="fireworksCanvas"></canvas>
-				<div class="birthday-overlay" id="birthdayOverlay">
-					<div class="birthday-card">
-						<div class="big"></div>
-						<div style="margin-top:6px;color:var(--soft)"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="snow-container"></div>
-		<div class="intro-overlay" id="introOverlay">
-			<div class="stars stars-back"></div>
-			<div class="stars stars-front"></div>
-			<div class="moon"></div>
+/* ======================================================
+   COSMIC BACKGROUND
+====================================================== */
 
-			<div class="intro-content">
-				<h1 class="intro-title">Este espacio fue creado con cariño para ti Esther 🤍</h1>
-				<p class="intro-subtitle">
-					Tómate un momento, este lugar es para ti
-				</p>
-				<button class="intro-btn" id="enterBtn">
-					Pulsa para continuar ✨
-				</button>
-			</div>
-		</div>
+.space-background{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  z-index:-10;
+}
 
-		<script>
-			function isChristmas(evaluateDay) {
-				const today = new Date();
-				const day = today.getDate();
-				const month = today.getMonth();
-				if(!evaluateDay) return month === 11;
-				return month === 11 && [24, 25].includes(day);
-			}
-		</script>
-		<script src="https://migueajm.github.io/esther/phrases.js?date=19122025"></script>
-		<script src="https://migueajm.github.io/esther/app.js?date=2112202501"></script>
-		<script src="https://migueajm.github.io/esther/mp3.js?date=1912202501"></script>
-	</body>
+.nebula{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(120px);
+  opacity:.35;
+  animation:nebulaMove 30s ease-in-out infinite alternate;
+}
+
+.nebula-1{
+  width:600px;
+  height:600px;
+  background:#4f46e5;
+  top:-100px;
+  left:-150px;
+}
+
+.nebula-2{
+  width:500px;
+  height:500px;
+  background:#ec4899;
+  top:30%;
+  right:-100px;
+  animation-duration:35s;
+}
+
+.nebula-3{
+  width:450px;
+  height:450px;
+  background:#06b6d4;
+  bottom:-120px;
+  left:20%;
+  animation-duration:40s;
+}
+
+@keyframes nebulaMove{
+  from{
+    transform:translateY(0) translateX(0) scale(1);
+  }
+  to{
+    transform:translateY(40px) translateX(30px) scale(1.15);
+  }
+}
+
+/* ======================================================
+   STARS CANVAS
+====================================================== */
+
+#starsCanvas{
+  position:fixed;
+  inset:0;
+  z-index:-9;
+}
+
+/* ======================================================
+   INTRO
+====================================================== */
+
+.intro{
+  position:fixed;
+  inset:0;
+  background:#03050d;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  transition:1.5s ease;
+}
+
+.intro.hidden{
+  opacity:0;
+  pointer-events:none;
+}
+
+.intro-text{
+  font-size:1.2rem;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  opacity:.7;
+  animation:pulse 2s infinite;
+}
+
+.intro-stars{
+  margin-top:30px;
+  font-size:2rem;
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  0%,100%{opacity:.4;}
+  50%{opacity:1;}
+}
+
+/* ======================================================
+   LANGUAGE SWITCHER
+====================================================== */
+
+.language-switcher{
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:999;
+  display:flex;
+  gap:10px;
+}
+
+.lang-btn{
+  border:none;
+  padding:10px 15px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.08);
+  color:white;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  transition:.3s ease;
+}
+
+.lang-btn.active{
+  background:linear-gradient(135deg,#63e6ff,#8b5cf6);
+  box-shadow:0 0 25px rgba(99,230,255,.4);
+}
+
+/* ======================================================
+   MUSIC BUTTON
+====================================================== */
+
+.music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  border:none;
+  background:rgba(255,255,255,.08);
+  color:white;
+  font-size:1.2rem;
+  cursor:pointer;
+  backdrop-filter:blur(12px);
+  z-index:999;
+  transition:.3s ease;
+}
+
+.music-btn:hover{
+  transform:scale(1.08);
+}
+
+/* ======================================================
+   HERO
+====================================================== */
+
+header{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px;
+  position:relative;
+}
+
+.hero{
+  max-width:950px;
+}
+
+.badge{
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  padding:10px 18px;
+  border-radius:999px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  margin-bottom:30px;
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#63e6ff;
+  box-shadow:0 0 15px #63e6ff;
+}
+
+h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(3rem,8vw,7rem);
+  line-height:1;
+  letter-spacing:-4px;
+  margin-bottom:30px;
+}
+
+.gradient{
+  background:linear-gradient(135deg,#63e6ff,#c084fc,#ec4899);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+  font-size:1.15rem;
+  line-height:2;
+  opacity:.8;
+  max-width:720px;
+  margin:auto;
+}
+
+.scroll{
+  margin-top:60px;
+  opacity:.6;
+  animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(10px);
+  }
+}
+
+/* ======================================================
+   SECTIONS
+====================================================== */
+
+section{
+  width:min(1100px,92%);
+  margin:auto;
+  padding:120px 0;
+}
+
+.section-title{
+  text-align:center;
+  font-size:3rem;
+  margin-bottom:20px;
+  font-family:'Space Grotesk',sans-serif;
+}
+
+.section-description{
+  text-align:center;
+  opacity:.7;
+  max-width:700px;
+  margin:0 auto 60px;
+  line-height:1.8;
+}
+
+/* ======================================================
+   CARDS
+====================================================== */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:30px;
+  padding:35px;
+  backdrop-filter:blur(14px);
+  transition:.4s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  width:200px;
+  height:200px;
+  background:radial-gradient(circle,rgba(99,230,255,.25),transparent);
+  top:-80px;
+  right:-80px;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  border-color:rgba(99,230,255,.35);
+  box-shadow:0 0 35px rgba(99,230,255,.15);
+}
+
+.card h3{
+  margin-bottom:18px;
+  font-size:1.4rem;
+}
+
+.card p{
+  opacity:.75;
+  line-height:1.9;
+}
+
+/* ======================================================
+   QUOTE
+====================================================== */
+
+.quote-section{
+  text-align:center;
+}
+
+.quote{
+  font-size:clamp(1.7rem,4vw,3rem);
+  line-height:1.6;
+  max-width:900px;
+  margin:auto;
+  font-family:'Space Grotesk',sans-serif;
+}
+
+.quote-author{
+  margin-top:30px;
+  opacity:.6;
+}
+
+/* ======================================================
+   LETTER
+====================================================== */
+
+.letter{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:35px;
+  padding:50px;
+  backdrop-filter:blur(15px);
+  max-width:850px;
+  margin:auto;
+}
+
+.letter p{
+  line-height:2;
+  opacity:.82;
+  margin-bottom:24px;
+}
+
+/* ======================================================
+   WISH SECTION
+====================================================== */
+
+.wish-section{
+  text-align:center;
+}
+
+.wish-button{
+  margin-top:40px;
+  padding:18px 30px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(135deg,#63e6ff,#8b5cf6);
+  color:white;
+  cursor:pointer;
+  font-size:1rem;
+  transition:.4s ease;
+}
+
+.wish-button:hover{
+  transform:scale(1.05);
+}
+
+.wish-message{
+  margin-top:40px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:1s ease;
+  font-size:1.3rem;
+  max-width:700px;
+  margin-inline:auto;
+  line-height:1.8;
+}
+
+.wish-message.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ======================================================
+   SHOOTING STAR
+====================================================== */
+
+.shooting-star{
+  position:fixed;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 20px white;
+  z-index:-1;
+  animation:shoot 2s linear forwards;
+}
+
+.shooting-star::after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:2px;
+  background:linear-gradient(to right,white,transparent);
+  transform:translateX(-100%);
+}
+
+@keyframes shoot{
+  from{
+    transform:translate(0,0);
+    opacity:1;
+  }
+  to{
+    transform:translate(-800px,500px);
+    opacity:0;
+  }
+}
+
+/* ======================================================
+   BIRTHDAY MODE
+====================================================== */
+
+.birthday-banner{
+  position:fixed;
+  top:4rem;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg,#ec4899,#8b5cf6,#63e6ff);
+  padding:22px 35px;
+  border-radius:20px;
+  z-index:9999;
+  box-shadow:0 0 40px rgba(236,72,153,.45);
+  animation:float 4s ease-in-out infinite;
+}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+
+footer{
+  padding:80px 20px;
+  text-align:center;
+  opacity:.6;
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media(max-width:768px){
+
+  h1{
+    letter-spacing:-2px;
+  }
+
+  .section-title{
+    font-size:2.2rem;
+  }
+
+  .letter{
+    padding:30px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ======================================================
+     INTRO
+====================================================== -->
+
+<div class="intro" id="intro">
+  <div class="intro-text">
+    Connecting to the universe...
+  </div>
+
+  <div class="intro-stars">
+    ✦ ✦ ✦
+  </div>
+</div>
+
+<!-- ======================================================
+     BACKGROUND
+====================================================== -->
+
+<div class="space-background">
+
+  <div class="nebula nebula-1"></div>
+  <div class="nebula nebula-2"></div>
+  <div class="nebula nebula-3"></div>
+
+</div>
+
+<canvas id="starsCanvas"></canvas>
+
+<!-- ======================================================
+     LANGUAGE
+====================================================== -->
+
+<div class="language-switcher">
+  <button class="lang-btn active" data-lang="es">ES</button>
+  <button class="lang-btn" data-lang="en">EN</button>
+</div>
+
+<!-- ======================================================
+     MUSIC
+====================================================== -->
+
+<button class="music-btn" id="musicBtn">
+  ♫
+</button>
+
+<audio id="bgMusic" loop>
+  <source src="./mp3/8.mp3" type="audio/mp3">
+</audio>
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+
+<header>
+
+  <div class="hero">
+
+    <div class="badge">
+      <span class="dot"></span>
+      <span data-i18n="badge"></span>
+    </div>
+
+    <h1>
+      <span data-i18n="title_1"></span>
+      <span class="gradient" data-i18n="title_2"></span>
+    </h1>
+
+    <p class="subtitle" data-i18n="subtitle"></p>
+
+    <div class="scroll" data-i18n="scroll"></div>
+
+  </div>
+
+</header>
+
+<!-- ======================================================
+     SECTION
+====================================================== -->
+
+<section>
+
+  <h2 class="section-title" data-i18n="section_title"></h2>
+
+  <p class="section-description" data-i18n="section_description"></p>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3 data-i18n="card1_title"></h3>
+      <p data-i18n="card1_text"></p>
+    </div>
+
+    <div class="card">
+      <h3 data-i18n="card2_title"></h3>
+      <p data-i18n="card2_text"></p>
+    </div>
+
+    <div class="card">
+      <h3 data-i18n="card3_title"></h3>
+      <p data-i18n="card3_text"></p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ======================================================
+     QUOTE
+====================================================== -->
+
+<section class="quote-section">
+
+  <div class="quote" id="dynamicQuote"></div>
+
+  <div class="quote-author" data-i18n="quote_author"></div>
+
+</section>
+
+<!-- ======================================================
+     LETTER
+====================================================== -->
+
+<section>
+
+  <div class="letter">
+
+    <p data-i18n="letter_1"></p>
+    <p data-i18n="letter_2"></p>
+    <p data-i18n="letter_3"></p>
+    <p data-i18n="letter_4"></p>
+    <p data-i18n="letter_5"></p>
+
+  </div>
+
+</section>
+
+<!-- ======================================================
+     WISH
+====================================================== -->
+
+<section class="wish-section">
+
+  <h2 class="section-title" data-i18n="wish_title"></h2>
+
+  <p class="section-description" data-i18n="wish_description"></p>
+
+  <button class="wish-button" id="wishButton" data-i18n="wish_button"></button>
+
+  <div class="wish-message" id="wishMessage"></div>
+
+</section>
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer data-i18n="footer"></footer>
+
+<script>
+
+/* ======================================================
+   INTRO
+====================================================== */
+
+window.addEventListener("load",()=>{
+
+  setTimeout(()=>{
+
+    document.getElementById("intro").classList.add("hidden");
+
+  },2500);
+
+});
+
+/* ======================================================
+   STARS CANVAS
+====================================================== */
+
+const canvas = document.getElementById("starsCanvas");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener("resize",resizeCanvas);
+
+const stars = [];
+
+for(let i=0;i<250;i++){
+
+  stars.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    radius:Math.random()*1.5,
+    speed:Math.random()*0.3,
+    opacity:Math.random()
+  });
+
+}
+
+function animateStars(){
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  stars.forEach(star=>{
+
+    star.y += star.speed;
+
+    if(star.y > canvas.height){
+      star.y = 0;
+    }
+
+    ctx.beginPath();
+    ctx.arc(star.x,star.y,star.radius,0,Math.PI*2);
+    ctx.fillStyle = `rgba(255,255,255,${star.opacity})`;
+    ctx.fill();
+
+  });
+
+  requestAnimationFrame(animateStars);
+
+}
+
+animateStars();
+
+/* ======================================================
+   SHOOTING STARS
+====================================================== */
+
+function createShootingStar(){
+
+  const star = document.createElement("div");
+
+  star.className = "shooting-star";
+
+  star.style.top = Math.random()*40 + "vh";
+  star.style.left = Math.random()*100 + "vw";
+
+  document.body.appendChild(star);
+
+  setTimeout(()=>{
+
+    star.remove();
+
+  },2000);
+
+}
+
+setInterval(createShootingStar,7000);
+
+/* ======================================================
+   MUSIC
+====================================================== */
+
+const musicBtn = document.getElementById("musicBtn");
+const bgMusic = document.getElementById("bgMusic");
+
+let playing = false;
+
+musicBtn.addEventListener("click",()=>{
+
+  if(!playing){
+
+    bgMusic.play();
+    musicBtn.innerHTML = "❚❚";
+    playing = true;
+
+  }else{
+
+    bgMusic.pause();
+    musicBtn.innerHTML = "♫";
+    playing = false;
+
+  }
+
+});
+
+/* ======================================================
+   TRANSLATIONS
+====================================================== */
+
+const translations = {
+
+  es:{
+
+    badge:"Un pequeño universo para Esther",
+
+    title_1:"Entre galaxias",
+    title_2:"y sueños",
+
+    subtitle:"Este lugar existe para recordarte que incluso en los días silenciosos, sigues brillando como una estrella lejana en medio del universo.",
+
+    scroll:"Desliza lentamente ✨",
+
+    section_title:"Pequeños recordatorios del universo",
+
+    section_description:"A veces el corazón necesita pausas suaves, como estrellas descansando entre nebulosas.",
+
+    card1_title:"Eres suficiente",
+    card1_text:"Incluso en los días donde todo parece pesado, tu existencia sigue teniendo luz.",
+
+    card2_title:"Todo florece a su tiempo",
+    card2_text:"Las galaxias tardan millones de años en formarse. Las cosas hermosas no nacen con prisa.",
+
+    card3_title:"La sensibilidad es poder",
+    card3_text:"Seguir siendo gentil en un mundo duro es una forma silenciosa de valentía.",
+
+    quote_author:"— Para Esther",
+
+    letter_1:"Querida Esther,",
+
+    letter_2:"Espero que este pequeño rincón del universo siempre pueda darte tranquilidad.",
+
+    letter_3:"Hay personas que miran al cielo buscando respuestas, pero quizá la verdadera belleza está en simplemente existir bajo las mismas estrellas.",
+
+    letter_4:"Incluso cuando la vida parece caótica, el universo sigue creando galaxias silenciosamente.",
+
+    letter_5:"Y quizá tú también eres una de ellas.",
+
+    wish_title:"Pide un deseo",
+
+    wish_description:"El universo siempre escucha las cosas que nacen desde el corazón.",
+
+    wish_button:"Ver una estrella fugaz ✨",
+
+    footer:"Hecho con polvo estelar ✦",
+
+    wishes:[
+      "Incluso las estrellas más lejanas siguen brillando para alguien.",
+      "Quizá el universo también sonríe cuando tú lo haces.",
+      "Las noches oscuras también crean constelaciones hermosas.",
+      "Tu luz existe incluso cuando no puedes verla.",
+      "A veces el universo tarda… pero nunca olvida."
+    ],
+
+    quotes:[
+      "Quizá todos somos polvo estelar intentando aprender a brillar.",
+      "Incluso las galaxias necesitan oscuridad para existir.",
+      "El universo también tiene momentos silenciosos.",
+      "Hay belleza incluso en las estrellas que parecen lejanas.",
+      "Tal vez el cielo se vea bonito porque tú también existes."
+    ],
+
+    birthday:"Feliz cumpleaños Esther ✨🌙"
+  },
+
+  en:{
+
+    badge:"A little universe made for Esther",
+
+    title_1:"Between galaxies",
+    title_2:"and dreams",
+
+    subtitle:"This place exists to remind you that even on quiet days, you still shine like a distant star somewhere in the universe.",
+
+    scroll:"Scroll slowly ✨",
+
+    section_title:"Little reminders from the universe",
+
+    section_description:"Sometimes the heart needs soft pauses, like stars resting between nebulas.",
+
+    card1_title:"You are enough",
+    card1_text:"Even on the days when everything feels heavy, your existence still carries light.",
+
+    card2_title:"Everything blooms in time",
+    card2_text:"Galaxies take millions of years to form. Beautiful things are never rushed.",
+
+    card3_title:"Softness is power",
+    card3_text:"Remaining gentle in a hard world is a silent form of bravery.",
+
+    quote_author:"— For Esther",
+
+    letter_1:"Dear Esther,",
+
+    letter_2:"I hope this little corner of the universe always gives you peace.",
+
+    letter_3:"Some people look at the sky searching for answers, but maybe the real beauty is simply existing beneath the same stars.",
+
+    letter_4:"Even when life feels chaotic, the universe keeps creating galaxies silently.",
+
+    letter_5:"And maybe you are one of them too.",
+
+    wish_title:"Make a wish",
+
+    wish_description:"The universe always listens to things born from the heart.",
+
+    wish_button:"See a shooting star ✨",
+
+    footer:"Made with stardust ✦",
+
+    wishes:[
+      "Even the most distant stars still shine for someone.",
+      "Maybe the universe smiles when you do too.",
+      "Dark nights also create beautiful constellations.",
+      "Your light exists even when you cannot see it.",
+      "Sometimes the universe takes time… but never forgets."
+    ],
+
+    quotes:[
+      "Maybe we are all stardust learning how to shine.",
+      "Even galaxies need darkness to exist.",
+      "The universe also has silent moments.",
+      "There is beauty even in distant stars.",
+      "Maybe the sky looks beautiful because you exist too."
+    ],
+
+    birthday:"Happy Birthday Esther ✨🌙"
+  }
+
+};
+
+let currentLang = localStorage.getItem("language") || "es";
+
+/* ======================================================
+   LANGUAGE
+====================================================== */
+
+function changeLanguage(lang){
+
+  currentLang = lang;
+
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+
+    const key = el.getAttribute("data-i18n");
+
+    el.innerHTML = translations[lang][key];
+
+  });
+
+  const randomQuote = translations[lang].quotes[
+    Math.floor(Math.random()*translations[lang].quotes.length)
+  ];
+
+  document.getElementById("dynamicQuote").innerHTML = `"${randomQuote}"`;
+
+  document.querySelectorAll(".lang-btn").forEach(btn=>{
+    btn.classList.remove("active");
+  });
+
+  document.querySelector(`[data-lang="${lang}"]`)
+    .classList.add("active");
+
+  localStorage.setItem("language",lang);
+
+}
+
+document.querySelectorAll(".lang-btn").forEach(btn=>{
+
+  btn.addEventListener("click",()=>{
+
+    changeLanguage(btn.dataset.lang);
+
+  });
+
+});
+
+changeLanguage(currentLang);
+
+/* ======================================================
+   WISH MODE
+====================================================== */
+
+const wishButton = document.getElementById("wishButton");
+const wishMessage = document.getElementById("wishMessage");
+
+wishButton.addEventListener("click",()=>{
+
+  createShootingStar();
+
+  const wishes = translations[currentLang].wishes;
+
+  const randomWish = wishes[
+    Math.floor(Math.random()*wishes.length)
+  ];
+
+  wishMessage.innerHTML = `"${randomWish}"`;
+
+  wishMessage.classList.add("show");
+
+});
+
+/* ======================================================
+   BIRTHDAY MODE
+====================================================== */
+
+const birthdayMonth = 12;
+const birthdayDay = 7;
+
+const today = new Date();
+
+if(
+  today.getMonth()+1 === birthdayMonth &&
+  today.getDate() === birthdayDay
+){
+
+  const banner = document.createElement("div");
+
+  banner.className = "birthday-banner";
+
+  banner.innerHTML = translations[currentLang].birthday;
+
+  document.body.appendChild(banner);
+
+}
+
+</script>
+</body>
 </html>

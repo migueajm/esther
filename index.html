@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>For Esther ✨</title>
-<link rel="shortcut icon" href="https://migueajm.github.io/esther/favicon.png" type="image/x-icon">
+<title>For Miriam ✨</title>
+<link rel="icon" href="./favicon-miriam.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -314,16 +314,32 @@ section{
   transition:.4s ease;
   position:relative;
   overflow:hidden;
+  isolation:isolate;
 }
 
 .card::before{
   content:"";
   position:absolute;
-  width:200px;
-  height:200px;
-  background:radial-gradient(circle,rgba(99,230,255,.25),transparent);
-  top:-80px;
-  right:-80px;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(99,230,255,.22) 0%,rgba(139,92,246,.1) 38%,transparent 70%);
+  top:-145px;
+  right:-115px;
+  filter:blur(8px);
+  pointer-events:none;
+  z-index:-1;
+  transition:transform .6s ease,opacity .6s ease;
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:linear-gradient(125deg,rgba(255,255,255,.07),transparent 35%);
+  pointer-events:none;
+  z-index:-1;
 }
 
 .card:hover{
@@ -332,14 +348,23 @@ section{
   box-shadow:0 0 35px rgba(99,230,255,.15);
 }
 
+.card:hover::before{
+  transform:translate(-18px,18px) scale(1.12);
+  opacity:.9;
+}
+
 .card h3{
   margin-bottom:18px;
   font-size:1.4rem;
+  position:relative;
+  z-index:1;
 }
 
 .card p{
   opacity:.75;
   line-height:1.9;
+  position:relative;
+  z-index:1;
 }
 
 /* ======================================================
@@ -381,6 +406,22 @@ section{
   line-height:2;
   opacity:.82;
   margin-bottom:24px;
+}
+
+.letter-signature{display:flex;align-items:center;gap:14px;margin-top:34px;color:#c4b5fd;font-family:'Space Grotesk',sans-serif}
+.letter-signature::before{content:"";width:42px;height:1px;background:linear-gradient(90deg,transparent,#c4b5fd)}
+
+/* DAILY STAR */
+.daily-star{text-align:center}
+.daily-capsule{max-width:780px;margin:0 auto;padding:clamp(32px,6vw,64px);border:1px solid rgba(255,255,255,.12);border-radius:40px;background:radial-gradient(circle at 50% 0,rgba(192,132,252,.2),transparent 45%),rgba(255,255,255,.045);backdrop-filter:blur(18px);box-shadow:0 30px 80px rgba(0,0,0,.25);position:relative;overflow:hidden}
+.daily-kicker{color:#a5f3fc;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:22px}
+.daily-message{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.45rem,4vw,2.35rem);line-height:1.55}
+.daily-date{margin-top:26px;opacity:.55;font-size:.9rem;text-transform:capitalize}
+
+.content-refresh{animation:contentRefresh .65s ease both}
+@keyframes contentRefresh{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 /* ======================================================
@@ -476,6 +517,27 @@ section{
 }
 
 /* ======================================================
+   BIRTHDAY EXPERIENCE
+====================================================== */
+
+.birthday-experience{position:fixed;inset:0;z-index:100000;background:#02030c;display:none;place-items:center;overflow:hidden;padding:24px}
+.birthday-experience.show{display:grid;animation:birthdayReveal 1.4s ease both}
+.birthday-sky{position:absolute;inset:0;width:100%;height:100%}
+.birthday-glow{position:absolute;width:min(70vw,800px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.2),transparent 68%);filter:blur(20px);animation:moonPulse 6s ease-in-out infinite alternate}
+.birthday-content{position:relative;z-index:2;text-align:center;width:min(900px,94vw);padding:clamp(28px,6vw,64px);border:1px solid rgba(255,255,255,.14);border-radius:40px;background:rgba(3,5,18,.5);backdrop-filter:blur(12px);box-shadow:0 0 100px rgba(99,230,255,.12)}
+.birthday-eyebrow{letter-spacing:.28em;text-transform:uppercase;color:#a5f3fc;font-size:.72rem;margin-bottom:20px}
+.birthday-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.8rem,9vw,6.7rem);line-height:.95;letter-spacing:-.05em;background:linear-gradient(120deg,#fff,#a5f3fc,#c4b5fd,#f9a8d4);background-size:250% 250%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:birthdayGradient 5s ease infinite}
+.birthday-copy{max-width:700px;margin:28px auto 0;font-size:clamp(1rem,2.5vw,1.25rem);line-height:1.9;color:rgba(255,255,255,.85)}
+.birthday-enter{margin-top:30px;padding:15px 26px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:linear-gradient(135deg,#06b6d4,#8b5cf6,#ec4899);color:#fff;font:600 1rem 'Inter',sans-serif;cursor:pointer;box-shadow:0 0 35px rgba(139,92,246,.35)}
+.birthday-wish-stream{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.flying-wish{position:absolute;left:105%;white-space:nowrap;color:rgba(255,255,255,.82);font-size:clamp(.72rem,1.6vw,.95rem);text-shadow:0 0 12px #fff;animation:wishFly var(--duration) linear forwards}
+.birthday-close{position:absolute;top:18px;right:18px;z-index:5;width:44px;height:44px;border:1px solid rgba(255,255,255,.18);border-radius:50%;background:rgba(255,255,255,.08);color:#fff;font-size:1.2rem;cursor:pointer}
+@keyframes birthdayReveal{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:scale(1)}}
+@keyframes birthdayGradient{50%{background-position:100% 50%}}
+@keyframes moonPulse{to{transform:scale(1.18);opacity:.7}}
+@keyframes wishFly{to{transform:translateX(-150vw) translateY(var(--drift));opacity:0}}
+
+/* ======================================================
    FOOTER
 ====================================================== */
 
@@ -503,6 +565,15 @@ footer{
     padding:30px;
   }
 
+  section{padding:85px 0}
+  .language-switcher{top:12px;right:12px}
+  .music-btn{bottom:14px;right:14px}
+
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
 </style>
@@ -516,7 +587,7 @@ footer{
 
 <div class="intro" id="intro">
   <div class="intro-text">
-    Connecting to the universe...
+    Preparando algo especial para Miriam...
   </div>
 
   <div class="intro-stars">
@@ -551,7 +622,7 @@ footer{
      MUSIC
 ====================================================== -->
 
-<button class="music-btn" id="musicBtn">
+<button class="music-btn" id="musicBtn" aria-label="Reproducir música" title="Reproducir música">
   ♫
 </button>
 
@@ -620,6 +691,14 @@ footer{
      QUOTE
 ====================================================== -->
 
+<section class="daily-star">
+  <div class="daily-capsule">
+    <div class="daily-kicker" data-i18n="daily_kicker"></div>
+    <div class="daily-message" id="dailyMessage" aria-live="polite"></div>
+    <div class="daily-date" id="dailyDate"></div>
+  </div>
+</section>
+
 <section class="quote-section">
 
   <div class="quote" id="dynamicQuote"></div>
@@ -641,6 +720,8 @@ footer{
     <p data-i18n="letter_3"></p>
     <p data-i18n="letter_4"></p>
     <p data-i18n="letter_5"></p>
+
+    <div class="letter-signature" data-i18n="signature"></div>
 
   </div>
 
@@ -668,6 +749,20 @@ footer{
 
 <footer data-i18n="footer"></footer>
 
+<div class="birthday-experience" id="birthdayExperience" role="dialog" aria-modal="true" aria-labelledby="birthdayTitle">
+  <canvas class="birthday-sky" id="birthdayCanvas"></canvas>
+  <div class="birthday-glow"></div>
+  <div class="birthday-wish-stream" id="birthdayWishStream"></div>
+  <button class="birthday-close" id="birthdayClose" aria-label="Cerrar celebración">×</button>
+  <div class="birthday-content">
+    <div class="birthday-eyebrow" data-i18n="birthday_eyebrow"></div>
+    <h2 class="birthday-title" id="birthdayTitle" data-i18n="birthday_title"></h2>
+    <p class="birthday-copy" data-i18n="birthday_copy"></p>
+    <button class="birthday-enter" id="birthdayEnter" data-i18n="birthday_enter"></button>
+  </div>
+</div>
+
+<script src="./phrases.js"></script>
 <script>
 
 /* ======================================================
@@ -778,12 +873,16 @@ musicBtn.addEventListener("click",()=>{
 
     bgMusic.play();
     musicBtn.innerHTML = "❚❚";
+    musicBtn.setAttribute("aria-label","Pausar música");
+    musicBtn.title = "Pausar música";
     playing = true;
 
   }else{
 
     bgMusic.pause();
     musicBtn.innerHTML = "♫";
+    musicBtn.setAttribute("aria-label","Reproducir música");
+    musicBtn.title = "Reproducir música";
     playing = false;
 
   }
@@ -798,18 +897,31 @@ const translations = {
 
   es:{
 
-    badge:"Un pequeño universo para Esther",
+    badge:"Un pequeño universo para Miriam",
 
     title_1:"Entre galaxias",
     title_2:"y sueños",
 
     subtitle:"Este lugar existe para recordarte que incluso en los días silenciosos, sigues brillando como una estrella lejana en medio del universo.",
 
+    greetings:[
+      "Hoy este rincón existe para recordarte que tu luz también cuenta en los días silenciosos.",
+      "El universo cambia cada noche, y esta página cambia para dejarte hoy una razón nueva para sonreír.",
+      "Si el día se siente demasiado rápido, quédate un momento: hay algo bonito escrito especialmente para ti.",
+      "No todas las estrellas se ven a simple vista. Tu forma de iluminar la vida de otros es una de ellas.",
+      "Hay días comunes que se vuelven extraordinarios con un solo pensamiento: qué suerte que existes, Miriam.",
+      "Este pequeño universo vuelve a despertar hoy solamente para decirte algo que quizá necesitas escuchar.",
+      "Entre todo el ruido del mundo, este lugar siempre guardará un instante de calma para ti."
+    ],
+
     scroll:"Desliza lentamente ✨",
 
     section_title:"Pequeños recordatorios del universo",
 
     section_description:"A veces el corazón necesita pausas suaves, como estrellas descansando entre nebulosas.",
+
+    daily_kicker:"Una estrella para hoy",
+    signature:"Con todo mi cariño, Migue",
 
     card1_title:"Eres suficiente",
     card1_text:"Incluso en los días donde todo parece pesado, tu existencia sigue teniendo luz.",
@@ -820,9 +932,16 @@ const translations = {
     card3_title:"La sensibilidad es poder",
     card3_text:"Seguir siendo gentil en un mundo duro es una forma silenciosa de valentía.",
 
-    quote_author:"— Para Esther",
+    cardSets:[
+      [["Tu esencia deja huella","No necesitas hacer ruido para ser inolvidable; tu manera de ser permanece."],["También puedes descansar","Tu valor no depende de cuánto logres hoy. Respirar y cuidarte también es avanzar."],["Lo bonito te encuentra","Todo el cariño que entregas encuentra, tarde o temprano, el camino de regreso a ti."]],
+      [["Eres más fuerte de lo que crees","Cada dificultad que superaste vive ahora dentro de ti convertida en fortaleza."],["Tu sonrisa importa","Hay días que mejoran por completo gracias a una sonrisa tuya, aunque quizá no lo notes."],["Confía en tu ritmo","No vas tarde. Estás construyendo tu historia al tiempo exacto que necesita tu corazón."]],
+      [["Tu sensibilidad es un regalo","Sentir profundamente no te hace frágil; te permite encontrar belleza donde otros no miran."],["Mereces cosas bonitas","No por lo que haces por otros, sino sencillamente por ser tú."],["Hoy también cuenta","Incluso un paso pequeño puede acercarte a un lugar que un día parecía imposible."]],
+      [["Tu luz es muy tuya","No se parece a ninguna otra, y por eso el mundo sería distinto sin ti."],["Puedes empezar de nuevo","Cada amanecer trae permiso para soltar, respirar y volver a intentarlo."],["Alguien cree en ti","Incluso cuando tú dudas, hay quien mira tu historia y siente una admiración inmensa."]]
+    ],
 
-    letter_1:"Querida Esther,",
+    quote_author:"— Para Miriam",
+
+    letter_1:"Querida Miriam,",
 
     letter_2:"Espero que este pequeño rincón del universo siempre pueda darte tranquilidad.",
 
@@ -848,6 +967,17 @@ const translations = {
       "A veces el universo tarda… pero nunca olvida."
     ],
 
+    daily:[
+      "Hoy el universo tiene una misión sencilla: recordarte lo profundamente especial que eres.",
+      "No tienes que hacer nada extraordinario para brillar. Siendo tú, ya haces más bonito mi mundo.",
+      "Si hoy el día pesa, aquí tienes un lugar pequeño donde descansar y recordar cuánto vales.",
+      "Entre millones de casualidades, coincidir contigo sigue siendo mi favorita.",
+      "Tu sonrisa es una de esas cosas que quisiera guardar para volver a ella en cualquier día gris.",
+      "Admiro tu fuerza, pero también quiero que sepas que no siempre tienes que ser fuerte.",
+      "Ojalá hoy puedas mirarte con una parte del cariño y la admiración con que yo te miro.",
+      "De todas las estrellas de este universo, siempre sabría reconocer tu luz."
+    ],
+
     quotes:[
       "Quizá todos somos polvo estelar intentando aprender a brillar.",
       "Incluso las galaxias necesitan oscuridad para existir.",
@@ -856,23 +986,40 @@ const translations = {
       "Tal vez el cielo se vea bonito porque tú también existes."
     ],
 
-    birthday:"Feliz cumpleaños Esther ✨🌙"
+    birthday:"Feliz cumpleaños Miriam ✨🌙",
+    birthday_eyebrow:"31 de agosto · El universo está de fiesta",
+    birthday_title:"Feliz vida, Miriam",
+    birthday_copy:"Hoy no celebramos solamente un año más. Celebramos tu forma de existir, la calma que regalas, la fuerza con la que avanzas y todas las vidas que haces más bonitas sin darte cuenta. Que este nuevo viaje alrededor del sol te devuelva, multiplicado, todo el amor y la luz que dejas en el mundo.",
+    birthday_enter:"Haz que el cielo celebre ✨"
   },
 
   en:{
 
-    badge:"A little universe made for Esther",
+    badge:"A little universe made for Miriam",
 
     title_1:"Between galaxies",
     title_2:"and dreams",
 
     subtitle:"This place exists to remind you that even on quiet days, you still shine like a distant star somewhere in the universe.",
 
+    greetings:[
+      "Today this little corner exists to remind you that your light matters, even on silent days.",
+      "The universe changes every night, and this page changes to leave you a new reason to smile today.",
+      "If today feels too fast, stay for a moment: something beautiful was written especially for you.",
+      "Not every star is visible. The way you light up other people's lives is one of them.",
+      "Ordinary days become extraordinary with one thought: how lucky the world is that you exist, Miriam.",
+      "This tiny universe wakes again today just to tell you something you may need to hear.",
+      "Among all the noise in the world, this place will always keep a quiet moment for you."
+    ],
+
     scroll:"Scroll slowly ✨",
 
     section_title:"Little reminders from the universe",
 
     section_description:"Sometimes the heart needs soft pauses, like stars resting between nebulas.",
+
+    daily_kicker:"A star for today",
+    signature:"With all my affection, Migue",
 
     card1_title:"You are enough",
     card1_text:"Even on the days when everything feels heavy, your existence still carries light.",
@@ -883,9 +1030,16 @@ const translations = {
     card3_title:"Softness is power",
     card3_text:"Remaining gentle in a hard world is a silent form of bravery.",
 
-    quote_author:"— For Esther",
+    cardSets:[
+      [["Your essence leaves a mark","You do not need to be loud to be unforgettable; the way you are stays with people."],["You may rest too","Your worth is not measured by what you achieve today. Caring for yourself is progress too."],["Beauty finds you","All the love you give will eventually find its way back to you."]],
+      [["You are stronger than you think","Every challenge you overcame now lives inside you as strength."],["Your smile matters","Some days become entirely better because of your smile, even if you never notice."],["Trust your timing","You are not late. Your story is unfolding at the pace your heart needs."]],
+      [["Your sensitivity is a gift","Feeling deeply is not weakness; it lets you find beauty where others do not look."],["You deserve beautiful things","Not because of what you do for others, but simply because you are you."],["Today counts too","Even one small step can bring you closer to somewhere that once felt impossible."]],
+      [["Your light is yours alone","There is no other like it, and the world would be different without you."],["You can begin again","Every sunrise gives you permission to let go, breathe and try once more."],["Someone believes in you","Even when you doubt, someone looks at your story with immense admiration."]]
+    ],
 
-    letter_1:"Dear Esther,",
+    quote_author:"— For Miriam",
+
+    letter_1:"Dear Miriam,",
 
     letter_2:"I hope this little corner of the universe always gives you peace.",
 
@@ -911,6 +1065,17 @@ const translations = {
       "Sometimes the universe takes time… but never forgets."
     ],
 
+    daily:[
+      "Today the universe has one simple mission: to remind you how deeply special you are.",
+      "You do not have to do anything extraordinary to shine. Being you already makes my world better.",
+      "If today feels heavy, here is a little place to rest and remember how much you are worth.",
+      "Among millions of coincidences, finding you is still my favorite one.",
+      "Your smile is one of those things I wish I could save for every gray day.",
+      "I admire your strength, but I also want you to know you do not always have to be strong.",
+      "I hope today you can see yourself with some of the affection and admiration I see in you.",
+      "Of all the stars in this universe, I would always recognize your light."
+    ],
+
     quotes:[
       "Maybe we are all stardust learning how to shine.",
       "Even galaxies need darkness to exist.",
@@ -919,12 +1084,77 @@ const translations = {
       "Maybe the sky looks beautiful because you exist too."
     ],
 
-    birthday:"Happy Birthday Esther ✨🌙"
+    birthday:"Happy Birthday Miriam ✨🌙",
+    birthday_eyebrow:"August 31 · The universe is celebrating",
+    birthday_title:"Happy life, Miriam",
+    birthday_copy:"Today we celebrate more than another year. We celebrate the way you exist, the peace you give, the strength with which you move forward, and every life you make brighter without realizing it. May this new journey around the sun return all the love and light you give to the world, multiplied.",
+    birthday_enter:"Make the sky celebrate ✨"
   }
 
 };
 
 let currentLang = localStorage.getItem("language") || "es";
+let dynamicSeed = Math.floor(Math.random()*100000);
+let lastDynamicRefresh = Date.now();
+
+function animateRefresh(elements){
+  elements.forEach(element=>{
+    element.classList.remove("content-refresh");
+    void element.offsetWidth;
+    element.classList.add("content-refresh");
+  });
+}
+
+function refreshDynamicContent(animate=true){
+  const lang = currentLang;
+  const now = new Date();
+  const source = lang === "es" && typeof appPhrases !== "undefined" && appPhrases.length
+    ? appPhrases
+    : translations[lang].daily;
+  const cardBank = translations[lang].cardSets.flat();
+  const greetingIndex = dynamicSeed % translations[lang].greetings.length;
+  const messageIndex = (dynamicSeed * 17 + 7) % source.length;
+  const cardStart = (dynamicSeed * 5) % cardBank.length;
+  const cardsForNow = [0,1,2].map(index=>cardBank[(cardStart + index * 4) % cardBank.length]);
+
+  document.querySelector(".subtitle").textContent = translations[lang].greetings[greetingIndex];
+  document.getElementById("dailyMessage").textContent = source[messageIndex];
+  document.getElementById("dailyDate").textContent = new Intl.DateTimeFormat(
+    lang === "es" ? "es-MX" : "en-US",
+    {weekday:"long",day:"numeric",month:"long"}
+  ).format(now);
+  document.querySelectorAll(".cards .card").forEach((card,index)=>{
+    card.querySelector("h3").textContent = cardsForNow[index][0];
+    card.querySelector("p").textContent = cardsForNow[index][1];
+  });
+
+  if(animate){
+    animateRefresh([
+      document.querySelector(".subtitle"),
+      document.getElementById("dailyMessage"),
+      ...document.querySelectorAll(".cards .card")
+    ]);
+  }
+  lastDynamicRefresh = Date.now();
+}
+
+function rotateDynamicContent(){
+  const previousSeed = dynamicSeed;
+  const lang = currentLang;
+  const sourceLength = lang === "es" && typeof appPhrases !== "undefined" && appPhrases.length
+    ? appPhrases.length
+    : translations[lang].daily.length;
+  const greetingLength = translations[lang].greetings.length;
+  const cardLength = translations[lang].cardSets.flat().length;
+  do{
+    dynamicSeed=Math.floor(Math.random()*100000);
+  }while(
+    dynamicSeed % greetingLength === previousSeed % greetingLength ||
+    (dynamicSeed * 17 + 7) % sourceLength === (previousSeed * 17 + 7) % sourceLength ||
+    (dynamicSeed * 5) % cardLength === (previousSeed * 5) % cardLength
+  );
+  refreshDynamicContent(true);
+}
 
 /* ======================================================
    LANGUAGE
@@ -948,6 +1178,8 @@ function changeLanguage(lang){
 
   document.getElementById("dynamicQuote").innerHTML = `"${randomQuote}"`;
 
+  refreshDynamicContent(false);
+
   document.querySelectorAll(".lang-btn").forEach(btn=>{
     btn.classList.remove("active");
   });
@@ -970,6 +1202,14 @@ document.querySelectorAll(".lang-btn").forEach(btn=>{
 });
 
 changeLanguage(currentLang);
+
+setInterval(()=>{
+  if(!document.hidden && document.hasFocus()) rotateDynamicContent();
+},60000);
+
+window.addEventListener("focus",()=>{
+  if(Date.now()-lastDynamicRefresh>=60000) rotateDynamicContent();
+});
 
 /* ======================================================
    WISH MODE
@@ -998,24 +1238,114 @@ wishButton.addEventListener("click",()=>{
    BIRTHDAY MODE
 ====================================================== */
 
-const birthdayMonth = 12;
-const birthdayDay = 7;
+const birthdayMonth = 8;
+const birthdayDay = 31;
 
 const today = new Date();
+
+const birthdayExperience = document.getElementById("birthdayExperience");
+const birthdayCanvas = document.getElementById("birthdayCanvas");
+const birthdayCtx = birthdayCanvas.getContext("2d");
+const birthdayWishStream = document.getElementById("birthdayWishStream");
+let birthdayActive = false;
+let birthdayAnimation;
+let birthdayStars = [];
+let fireworks = [];
+let sparks = [];
+let wishTimer;
+
+function sizeBirthdaySky(){
+  const ratio = Math.min(window.devicePixelRatio || 1,2);
+  birthdayCanvas.width = innerWidth * ratio;
+  birthdayCanvas.height = innerHeight * ratio;
+  birthdayCanvas.style.width = innerWidth + "px";
+  birthdayCanvas.style.height = innerHeight + "px";
+  birthdayCtx.setTransform(ratio,0,0,ratio,0,0);
+  birthdayStars = Array.from({length:Math.min(260,Math.floor(innerWidth/4))},()=>({
+    x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.5+.25,
+    a:Math.random()*.7+.2,p:Math.random()*.025+.008
+  }));
+}
+
+function launchFirework(x=Math.random()*innerWidth,y=innerHeight*(.12+Math.random()*.5)){
+  fireworks.push({x:x,y:innerHeight,tx:x,ty:y,trail:[],hue:Math.random()*360});
+}
+
+function explodeFirework(firework){
+  const count = innerWidth < 600 ? 55 : 85;
+  for(let i=0;i<count;i++){
+    const angle=Math.PI*2*i/count, speed=1.5+Math.random()*5;
+    sparks.push({x:firework.x,y:firework.y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,
+      life:1,decay:.009+Math.random()*.013,hue:firework.hue+Math.random()*35});
+  }
+}
+
+function drawBirthdaySky(){
+  if(!birthdayActive) return;
+  birthdayCtx.fillStyle="rgba(2,3,12,.2)";
+  birthdayCtx.fillRect(0,0,innerWidth,innerHeight);
+  birthdayStars.forEach(star=>{
+    star.a += star.p;
+    if(star.a>1 || star.a<.18) star.p*=-1;
+    birthdayCtx.beginPath();birthdayCtx.arc(star.x,star.y,star.r,0,Math.PI*2);
+    birthdayCtx.fillStyle=`rgba(255,255,255,${star.a})`;birthdayCtx.fill();
+  });
+  if(Math.random()<.025) launchFirework();
+  fireworks.forEach((f,index)=>{
+    f.trail.push([f.x,f.y]);if(f.trail.length>9)f.trail.shift();
+    f.x+=(f.tx-f.x)*.055;f.y+=(f.ty-f.y)*.055;
+    birthdayCtx.beginPath();f.trail.forEach((point,i)=>i?birthdayCtx.lineTo(...point):birthdayCtx.moveTo(...point));
+    birthdayCtx.strokeStyle=`hsla(${f.hue},100%,75%,.85)`;birthdayCtx.lineWidth=2;birthdayCtx.stroke();
+    if(Math.hypot(f.tx-f.x,f.ty-f.y)<8){explodeFirework(f);fireworks.splice(index,1)}
+  });
+  sparks.forEach((spark,index)=>{
+    spark.x+=spark.vx;spark.y+=spark.vy;spark.vy+=.035;spark.vx*=.992;spark.life-=spark.decay;
+    birthdayCtx.beginPath();birthdayCtx.arc(spark.x,spark.y,1.6,0,Math.PI*2);
+    birthdayCtx.fillStyle=`hsla(${spark.hue},100%,70%,${spark.life})`;birthdayCtx.fill();
+    if(spark.life<=0)sparks.splice(index,1);
+  });
+  birthdayAnimation=requestAnimationFrame(drawBirthdaySky);
+}
+
+function sendBirthdayWish(){
+  if(!birthdayActive) return;
+  const wishes = currentLang === "es" && typeof appPhrases !== "undefined" ? appPhrases : translations[currentLang].wishes;
+  const wish=document.createElement("span");
+  wish.className="flying-wish";
+  wish.textContent="✦ "+wishes[Math.floor(Math.random()*wishes.length)];
+  wish.style.top=(8+Math.random()*84)+"%";
+  wish.style.setProperty("--duration",(10+Math.random()*10)+"s");
+  wish.style.setProperty("--drift",(-80+Math.random()*160)+"px");
+  birthdayWishStream.appendChild(wish);
+  wish.addEventListener("animationend",()=>wish.remove());
+}
+
+function openBirthdayExperience(){
+  birthdayExperience.classList.add("show");
+  document.body.style.overflow="hidden";
+  birthdayActive=true;sizeBirthdaySky();drawBirthdaySky();
+  for(let i=0;i<4;i++)setTimeout(()=>launchFirework(),i*350);
+  sendBirthdayWish();wishTimer=setInterval(sendBirthdayWish,1700);
+}
+
+function closeBirthdayExperience(){
+  birthdayActive=false;cancelAnimationFrame(birthdayAnimation);clearInterval(wishTimer);
+  birthdayExperience.classList.remove("show");document.body.style.overflow="";
+  birthdayWishStream.textContent="";
+}
+
+document.getElementById("birthdayEnter").addEventListener("click",()=>{
+  for(let i=0;i<10;i++)setTimeout(()=>launchFirework(innerWidth*(.08+Math.random()*.84),innerHeight*(.08+Math.random()*.48)),i*180);
+  if(!playing){bgMusic.play().then(()=>{playing=true;musicBtn.innerHTML="❚❚"}).catch(()=>{});}
+});
+document.getElementById("birthdayClose").addEventListener("click",closeBirthdayExperience);
+window.addEventListener("resize",()=>{if(birthdayActive)sizeBirthdaySky()});
 
 if(
   today.getMonth()+1 === birthdayMonth &&
   today.getDate() === birthdayDay
 ){
-
-  const banner = document.createElement("div");
-
-  banner.className = "birthday-banner";
-
-  banner.innerHTML = translations[currentLang].birthday;
-
-  document.body.appendChild(banner);
-
+  setTimeout(openBirthdayExperience,2800);
 }
 
 </script>

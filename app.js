@@ -1,8 +1,7 @@
-const NAME = "Esther Mazariegos";
+const NAME = "Miriam";
 const BIRTHDAY_MONTH = 12;
-const BIRTHDAY_DAY = 7;
+const BIRTHDAY_DAY = 13;
 
-//window.location.href = "https://migueajm.github.io/esther/404.html";
 function todayLocal() {
 	const d = new Date();
 	return new Date(d.getFullYear(), d.getMonth(), d.getDate());

@@ -100,27 +100,58 @@ const musicBtn = document.getElementById("musicBtn");
 const bgMusic = document.getElementById("bgMusic");
 
 let playing = false;
+let currentTrack = "";
+const regularTracks = [1,2,3,4,5,6,7,8].map(number=>`./mp3/${number}.mp3`);
+
+function availableTracks(){
+  return new Date().getMonth() === 11
+    ? [...regularTracks,"./mp3/12.mp3"]
+    : regularTracks;
+}
+
+function selectRandomTrack(){
+  const tracks=availableTracks();
+  const candidates=tracks.filter(track=>track!==currentTrack);
+  const pool=candidates.length ? candidates : tracks;
+  currentTrack=pool[Math.floor(Math.random()*pool.length)];
+  bgMusic.src=currentTrack;
+  bgMusic.load();
+}
+
+selectRandomTrack();
 
 musicBtn.addEventListener("click",()=>{
 
   if(!playing){
 
-    bgMusic.play();
-    musicBtn.innerHTML = "❚❚";
-    musicBtn.setAttribute("aria-label","Pausar música");
-    musicBtn.title = "Pausar música";
-    playing = true;
+    selectRandomTrack();
+    bgMusic.play().catch(()=>{});
 
   }else{
 
     bgMusic.pause();
-    musicBtn.innerHTML = "♫";
-    musicBtn.setAttribute("aria-label","Reproducir música");
-    musicBtn.title = "Reproducir música";
-    playing = false;
 
   }
 
+});
+
+bgMusic.addEventListener("play",()=>{
+  playing=true;
+  musicBtn.innerHTML="❚❚";
+  musicBtn.setAttribute("aria-label","Pausar música");
+  musicBtn.title="Pausar música";
+});
+
+bgMusic.addEventListener("pause",()=>{
+  playing=false;
+  musicBtn.innerHTML="♫";
+  musicBtn.setAttribute("aria-label","Reproducir música aleatoria");
+  musicBtn.title="Reproducir música aleatoria";
+});
+
+bgMusic.addEventListener("ended",()=>{
+  selectRandomTrack();
+  bgMusic.play().catch(()=>{});
 });
 
 /* ======================================================

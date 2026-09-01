@@ -492,8 +492,8 @@ wishButton.addEventListener("click",()=>{
    BIRTHDAY MODE
 ====================================================== */
 
-const birthdayMonth = 8;
-const birthdayDay = 31;
+const birthdayMonth = 12;
+const birthdayDay = 13;
 
 const today = new Date();
 

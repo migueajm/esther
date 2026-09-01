@@ -522,7 +522,7 @@ section{
 
 .birthday-experience{position:fixed;inset:0;z-index:100000;background:#02030c;display:none;place-items:start center;overflow-x:hidden;overflow-y:auto;padding:clamp(64px,8vh,90px) 24px 32px}
 .birthday-experience.show{display:grid;animation:birthdayReveal 1.4s ease both}
-.birthday-sky{position:absolute;inset:0;width:100%;height:100%}
+.birthday-sky{position:fixed;inset:0;z-index:3;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen}
 .birthday-glow{position:absolute;width:min(70vw,800px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.2),transparent 68%);filter:blur(20px);animation:moonPulse 6s ease-in-out infinite alternate}
 .birthday-content{position:relative;z-index:2;text-align:center;width:min(1000px,94vw);padding:clamp(28px,6vw,64px);border:1px solid rgba(255,255,255,.14);border-radius:40px;background:rgba(3,5,18,.72);backdrop-filter:blur(12px);box-shadow:0 0 100px rgba(99,230,255,.12)}
 .birthday-eyebrow{letter-spacing:.28em;text-transform:uppercase;color:#a5f3fc;font-size:.72rem;margin-bottom:20px}

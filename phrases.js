@@ -105,6 +105,51 @@ const goodWishes = [
 ];
 
 const appPhrases = [...specialMessages, ...joyMessages, ...motivationMessages, ...goodWishes];
+
+/* Frases para las tres tarjetas de "Pequeños recordatorios del universo".
+   Se construyen con todos los comienzos, acciones y cierres compartidos para
+   conservar cada una de sus combinaciones sin mantener una lista duplicada. */
+const reminderOpenings = [
+  "Hoy puedes", "Este día te invita a", "Date permiso para", "Recuerda que puedes",
+  "Una buena forma de empezar es", "Tu siguiente paso puede ser", "Quizá hoy necesites",
+  "Hazte el regalo de", "La vida también se construye al", "Tu bienestar crece al",
+  "Hay fuerza en", "Todo puede empezar al", "Tu luz se nota cuando eliges",
+  "Este momento es perfecto para", "Confía en la posibilidad de"
+];
+
+const reminderActions = [
+  "darle una oportunidad nueva a este día", "confiar un poco más en lo que sabes hacer",
+  "respirar hondo y avanzar sin prisa", "reconocer algo bueno que ya está contigo",
+  "recordar todo lo que ya has superado", "regalarte un momento que te haga sonreír",
+  "convertir un paso pequeño en avance real", "tratarte con la misma ternura que ofreces a otros",
+  "hacer eso que importa aunque aparezca el miedo", "volver tu atención a lo que sí está pasando ahora",
+  "elegir una acción que acerque tu vida a lo que valoras", "hacer una pausa sin sentir culpa",
+  "mirar un error como una lección y no como una sentencia", "acercarte a alguien que te hace bien",
+  "imaginar una salida posible y empezar a buscarla", "respetar el ritmo de tu propio proceso",
+  "probar una manera distinta de resolver lo de siempre", "reconocer una cualidad tuya sin minimizarla",
+  "compartir una palabra amable con quien la necesite", "mover el cuerpo y despertar tu ánimo",
+  "soltar lo que no puedes controlar y atender lo que sí", "cumplir una promesa pequeña que te hiciste",
+  "permitirte sentir sin juzgarte por ello", "dejar espacio para que algo bueno te sorprenda",
+  "reconocer cuánto has avanzado, incluso si falta camino"
+];
+
+const reminderClosings = [
+  "lo sencillo también transforma", "tu valor no depende de la perfección",
+  "hoy todavía guarda posibilidades bonitas", "lo importante es seguir en movimiento",
+  "tu presencia ya hace una diferencia", "siempre puedes volver a comenzar",
+  "lo que cuidas con constancia florece", "tu esfuerzo de hoy sembrará el mañana",
+  "la esperanza se fortalece cuando la practicas", "no tienes que resolverlo todo hoy",
+  "eres más capaz de lo que el miedo te dice", "mereces hablarte con cariño",
+  "una decisión amable puede cambiar el rumbo", "cada avance cuenta",
+  "también hay belleza en ir despacio"
+];
+
+const motivationalCardMessages = Array.from({length: reminderOpenings.length}, (_, block) =>
+  reminderActions.map((action, index) => [
+    `${reminderOpenings[(block * 4 + index) % reminderOpenings.length]} ${action}`,
+    reminderClosings[(block * 9 + index) % reminderClosings.length]
+  ])
+).flat();
 let combination = 0;
 
 while (appPhrases.length < 1095) {

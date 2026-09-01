@@ -330,6 +330,7 @@ const translations = {
 let currentLang = localStorage.getItem("language") || "es";
 let dynamicSeed = Math.floor(Math.random()*100000);
 let lastDynamicRefresh = Date.now();
+let lastReminderIndexes = [];
 
 function animateRefresh(elements){
   elements.forEach(element=>{
@@ -345,11 +346,8 @@ function refreshDynamicContent(animate=true){
   const source = lang === "es" && typeof appPhrases !== "undefined" && appPhrases.length
     ? appPhrases
     : translations[lang].daily;
-  const cardBank = translations[lang].cardSets.flat();
   const greetingIndex = dynamicSeed % translations[lang].greetings.length;
   const messageIndex = (dynamicSeed * 17 + 7) % source.length;
-  const cardStart = (dynamicSeed * 5) % cardBank.length;
-  const cardsForNow = [0,1,2].map(index=>cardBank[(cardStart + index * 4) % cardBank.length]);
 
   document.querySelector(".subtitle").textContent = translations[lang].greetings[greetingIndex];
   document.getElementById("dailyMessage").textContent = source[messageIndex];
@@ -357,19 +355,38 @@ function refreshDynamicContent(animate=true){
     lang === "es" ? "es-MX" : "en-US",
     {weekday:"long",day:"numeric",month:"long"}
   ).format(now);
-  document.querySelectorAll(".cards .card").forEach((card,index)=>{
-    card.querySelector("h3").textContent = cardsForNow[index][0];
-    card.querySelector("p").textContent = cardsForNow[index][1];
-  });
-
   if(animate){
     animateRefresh([
       document.querySelector(".subtitle"),
-      document.getElementById("dailyMessage"),
-      ...document.querySelectorAll(".cards .card")
+      document.getElementById("dailyMessage")
     ]);
   }
   lastDynamicRefresh = Date.now();
+}
+
+function refreshReminderCards(animate=true){
+  const existingCards = translations[currentLang].cardSets.flat();
+  const cardBank = currentLang === "es" && typeof motivationalCardMessages !== "undefined"
+    ? [...existingCards, ...motivationalCardMessages]
+    : existingCards;
+  const availableIndexes = cardBank
+    .map((_, index)=>index)
+    .filter(index=>!lastReminderIndexes.includes(index));
+  const selectedIndexes = [];
+
+  while(selectedIndexes.length < 3){
+    const pool = availableIndexes.filter(index=>!selectedIndexes.includes(index));
+    selectedIndexes.push(pool[Math.floor(Math.random()*pool.length)]);
+  }
+
+  document.querySelectorAll(".cards .card").forEach((card,index)=>{
+    const [title, text] = cardBank[selectedIndexes[index]];
+    card.querySelector("h3").textContent = title;
+    card.querySelector("p").textContent = text;
+  });
+  lastReminderIndexes = selectedIndexes;
+
+  if(animate) animateRefresh([...document.querySelectorAll(".cards .card")]);
 }
 
 function rotateDynamicContent(){
@@ -379,13 +396,11 @@ function rotateDynamicContent(){
     ? appPhrases.length
     : translations[lang].daily.length;
   const greetingLength = translations[lang].greetings.length;
-  const cardLength = translations[lang].cardSets.flat().length;
   do{
     dynamicSeed=Math.floor(Math.random()*100000);
   }while(
     dynamicSeed % greetingLength === previousSeed % greetingLength ||
-    (dynamicSeed * 17 + 7) % sourceLength === (previousSeed * 17 + 7) % sourceLength ||
-    (dynamicSeed * 5) % cardLength === (previousSeed * 5) % cardLength
+    (dynamicSeed * 17 + 7) % sourceLength === (previousSeed * 17 + 7) % sourceLength
   );
   refreshDynamicContent(true);
 }
@@ -413,6 +428,7 @@ function changeLanguage(lang){
   document.getElementById("dynamicQuote").innerHTML = `"${randomQuote}"`;
 
   refreshDynamicContent(false);
+  refreshReminderCards(false);
 
   document.querySelectorAll(".lang-btn").forEach(btn=>{
     btn.classList.remove("active");
@@ -439,6 +455,10 @@ changeLanguage(currentLang);
 
 setInterval(()=>{
   if(!document.hidden && document.hasFocus()) rotateDynamicContent();
+},60000);
+
+setInterval(()=>{
+  if(!document.hidden) refreshReminderCards(true);
 },60000);
 
 window.addEventListener("focus",()=>{
@@ -472,8 +492,8 @@ wishButton.addEventListener("click",()=>{
    BIRTHDAY MODE
 ====================================================== */
 
-const birthdayMonth = 12;
-const birthdayDay = 13;
+const birthdayMonth = 8;
+const birthdayDay = 31;
 
 const today = new Date();
 
@@ -487,6 +507,62 @@ let birthdayStars = [];
 let fireworks = [];
 let sparks = [];
 let wishTimer;
+let memoryTimer;
+let currentMemory = 0;
+
+/* Agrega cada foto en `image` (por ejemplo: "./img/recuerdos/viaje.jpg")
+   y reemplaza su mensaje. Con `image: ""` se muestra el placeholder. */
+const birthdayMemories = [
+  {image:"",message:"Aquí vivirá un momento bonito que siempre valdrá la pena recordar."},
+  {image:"",message:"Un espacio para guardar una sonrisa, una aventura y todo lo que hizo especial ese día."},
+  {image:"",message:"Porque los mejores recuerdos no se quedan en una foto: también se quedan en el corazón."}
+];
+
+function renderMemory(index){
+  currentMemory=(index+birthdayMemories.length)%birthdayMemories.length;
+  const memory=birthdayMemories[currentMemory];
+  const visual=document.getElementById("memoryVisual");
+  visual.textContent="";
+
+  if(memory.image){
+    const photo=document.createElement("img");
+    photo.src=memory.image;
+    photo.alt=memory.alt || `Recuerdo ${currentMemory+1}`;
+    visual.appendChild(photo);
+  }else{
+    const placeholder=document.createElement("div");
+    placeholder.className="memory-placeholder";
+    placeholder.innerHTML='<span class="memory-placeholder-icon">✦</span><span>Una fotografía especial llegará aquí</span>';
+    visual.appendChild(placeholder);
+  }
+
+  document.getElementById("memoryNumber").textContent=`Recuerdo ${currentMemory+1} de ${birthdayMemories.length}`;
+  document.getElementById("memoryMessage").textContent=memory.message;
+  document.querySelectorAll(".memory-dot").forEach((dot,dotIndex)=>{
+    dot.classList.toggle("active",dotIndex===currentMemory);
+    dot.setAttribute("aria-current",dotIndex===currentMemory ? "true" : "false");
+  });
+}
+
+function setupMemoryCarousel(){
+  const copy=currentLang === "es"
+    ? {title:"Nuestros recuerdos",subtitle:"Pequeños instantes que merecen quedarse para siempre.",previous:"Recuerdo anterior",next:"Siguiente recuerdo"}
+    : {title:"Our memories",subtitle:"Little moments worth keeping forever.",previous:"Previous memory",next:"Next memory"};
+  document.getElementById("memoriesTitle").textContent=copy.title;
+  document.getElementById("memoriesSubtitle").textContent=copy.subtitle;
+  document.getElementById("memoryPrevious").setAttribute("aria-label",copy.previous);
+  document.getElementById("memoryNext").setAttribute("aria-label",copy.next);
+  const dots=document.getElementById("memoryDots");
+  dots.textContent="";
+  birthdayMemories.forEach((_,index)=>{
+    const dot=document.createElement("button");
+    dot.className="memory-dot";
+    dot.setAttribute("aria-label",`${copy.title} ${index+1}`);
+    dot.addEventListener("click",()=>renderMemory(index));
+    dots.appendChild(dot);
+  });
+  renderMemory(currentMemory);
+}
 
 function sizeBirthdaySky(){
   const ratio = Math.min(window.devicePixelRatio || 1,2);
@@ -560,10 +636,11 @@ function openBirthdayExperience(){
   birthdayActive=true;sizeBirthdaySky();drawBirthdaySky();
   for(let i=0;i<4;i++)setTimeout(()=>launchFirework(),i*350);
   sendBirthdayWish();wishTimer=setInterval(sendBirthdayWish,1700);
+  setupMemoryCarousel();memoryTimer=setInterval(()=>renderMemory(currentMemory+1),7000);
 }
 
 function closeBirthdayExperience(){
-  birthdayActive=false;cancelAnimationFrame(birthdayAnimation);clearInterval(wishTimer);
+  birthdayActive=false;cancelAnimationFrame(birthdayAnimation);clearInterval(wishTimer);clearInterval(memoryTimer);
   birthdayExperience.classList.remove("show");document.body.style.overflow="";
   birthdayWishStream.textContent="";
 }
@@ -573,6 +650,18 @@ document.getElementById("birthdayEnter").addEventListener("click",()=>{
   if(!playing){bgMusic.play().then(()=>{playing=true;musicBtn.innerHTML="❚❚"}).catch(()=>{});}
 });
 document.getElementById("birthdayClose").addEventListener("click",closeBirthdayExperience);
+document.getElementById("memoryPrevious").addEventListener("click",()=>renderMemory(currentMemory-1));
+document.getElementById("memoryNext").addEventListener("click",()=>renderMemory(currentMemory+1));
+document.getElementById("memoryCarousel").addEventListener("mouseenter",()=>clearInterval(memoryTimer));
+document.getElementById("memoryCarousel").addEventListener("mouseleave",()=>{
+  if(birthdayActive){clearInterval(memoryTimer);memoryTimer=setInterval(()=>renderMemory(currentMemory+1),7000);}
+});
+document.addEventListener("keydown",event=>{
+  if(!birthdayActive) return;
+  if(event.key==="ArrowLeft") renderMemory(currentMemory-1);
+  if(event.key==="ArrowRight") renderMemory(currentMemory+1);
+  if(event.key==="Escape") closeBirthdayExperience();
+});
 window.addEventListener("resize",()=>{if(birthdayActive)sizeBirthdaySky()});
 
 if(
